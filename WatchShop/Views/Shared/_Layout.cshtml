@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Watch Shop </title>
+    <meta charset="utf-8">
+    <meta name="description" content="app landing page template" />
+    <meta name="keywords" content="watchshop" />
+    <meta name="developer" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/Assets/Client/images/favicon.ico">
+    <link rel="shortcut icon" href="/Assets/Client/images/apple-icon.png">
+    <link rel="shortcut icon" sizes="72x72" href="/Assets/Client/images/apple-icon-72x72.png">
+    <link rel="shortcut icon" sizes="114x114" href="/Assets/Client/images/apple-icon-114x114.png">
+    <link rel="stylesheet" href="/Assets/Client/icons/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Client/fonts/flaticon.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/animate.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/owl.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/flexslider.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/selectize.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css//selectize.bootstrap3.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/bootstrap-dropdownhover.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/meanmenu.css">
+    <link rel="stylesheet" href="/Assets/Client/css/style.css">
+    <link rel="stylesheet" href="/Assets/Client/css/responsive.css">
+</head>
+<body>
+    <header id="xt-home" class="xt-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="user-nav pull-right col-md-6 col-sm-6 col-xs-12">
+                        <ul>
+                            <li><a href="#">Đăng ký</a></li>
+                            <li><a href="#">Đăng nhập</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-navigation">
+            <nav class="navbar navbar-fixed-top nav-scroll">
+                <div class="container">
+                    <div class="row">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span aria-hidden="true" class="icon"></span>
+                            </button>
+                            <a class="navbar-brand" href=""><img src="/Assets/Client/images/logo.png" alt="" class="img-responsive"></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="js-navbar-menu">
+                            <ul class="nav navbar-nav navbar-right ep-mobile-menu" id="navbar-nav">
+                                <li class="active"><a href="">HOME</a></li>
+                                <li><a href="/baohanh">BẢO HÀNH</a></li>
+                                <li><a href="/baiviet">BÀI VIẾT</a></li>
+                                <li><a href="/lienhe">LIÊN HỆ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        @{ Html.RenderAction("Category", "Home");}
+    </header>
+    <div class="container" style="background-color: burlywood;">
+        @RenderBody()
+    </div>
+    <footer class="xt-footer">
+        <div class="container">
+            <div class="section-separator">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        <div class="footer-widget footer-contact">
+                            <img src="/Assets/Client/images/logo.png" alt="" class="img-responsive">
+                            <ul>
+                                <li><i class="fa fa-mobile-phone"></i><a href="">+(1234) 456 7896</a></li>
+                                <li><i class="fa fa-envelope-o"></i><a href="">info@xootheme.com</a></li>
+                                <li>
+                                    <i class="fa fa-location-arrow"></i>
+                                    <address>Address: 42/1, dariapara road, New york city, New york. USA</address>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="footer-widget">
+                            <h4>My account</h4>
+                            <ul>
+                                <li><a href=""><i class="fa fa-caret-right"></i>My account</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>about us</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Shopping cart</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Checkout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="footer-widget">
+                            <h4>Custom Service</h4>
+                            <ul>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Shopping & return</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Seacure Shopping</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>International Shopping </a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Affiliate</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="footer-widget">
+                            <h4>Information</h4>
+                            <ul>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Store location</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>About our shop</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Our blog</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Secure Shopping</a></li>
+                                <li><a href=""><i class="fa fa-caret-right"></i>Delivery information</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/Assets/Client/plugins/js/jquery-1.11.3.min.js"></script>
+    <script src="/Assets/Client/plugins/js/bootstrap.min.js"></script>
+    <script src="/Assets/Client/plugins/js/meanmenu.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/Assets/Client/plugins/js/wow.min.js"></script>
+    <script src="/Assets/Client/plugins/js/owl.carousel.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.flexslider-min.js"></script>
+    <script src="/Assets/Client/plugins/js/bootstrap-dropdownhover.min.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery-ui.min.js"></script>
+    <script src="/Assets/Client/plugins/js/validator.min.js"></script>
+    <script src="/Assets/Client/plugins/js/smooth-scroll.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.fancybox.min.js"></script>
+    <script src="/Assets/Client/plugins/js/standalone/selectize.js"></script>
+    <script src="/Assets/Client/js/init.js"></script>
+</body>
+</html>

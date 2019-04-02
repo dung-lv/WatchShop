@@ -1,0 +1,96 @@
+﻿@model List<Model.EF.Product>
+@{
+    ViewBag.Title = "Watch Shop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
+}
+<section class="xt-slider">
+    <div class="row">
+        <div class="col-md-3 category-hidden padding-right-o"></div>
+        <div class="col-md-9 col-md-offset-3 padding-o padding-sm">
+            <div class="flexslider xt-slider-inner">
+                <ul class="slides">
+                    @foreach (var item in listPromotionProductTop)
+                    {
+                        <li style="height:494px;">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="" />
+                            <div class="slide_text">
+                                <span class="slide-category">@item.NamePromotion</span>
+                                <h2 class="slide_title">@item.NameProduct</h2>
+                                <p class="slide_byline ">
+                                    @item.Description
+                                </p>
+                                <a href="/@item.Metatitle/@item.ID_Product" class="btn btn-fill ">Mua ngay</a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="xt-product-subpage">
+    <div class="row section-separator">
+        <div class="xt-filter-nav product-sidebar">
+            <div class="price-range" style="width:400px;">
+                <h3>Price</h3>
+                <div class="each-price-range">
+                    <div id="xt-price-range"></div>
+                    <input type="text" id="amount" class="price-range-amount">
+                    <button class="btn btn-fill">Lọc</button>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="xt-feature-product">
+            <div class="section-separator">
+                <div class="xt-each-feature">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
+                        <div class="xt-feature">
+                            <div class="product-img">
+                                <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
+                                <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-title">
+                                    <span class="category xt-uppercase">Giá bán</span>
+                                </div>
+                                <div class="price-tag pull-right">
+                                    <span class="new-price xt-semibold">@item.Price</span>
+                                </div>
+                                <div class="xt-featured-caption">
+                                    <div class="add-cart">
+                                        <button class="btn btn-fill">Thêm vào giỏ hàng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 xt-bottom-hr">
+                    <hr class="xt-hr">
+                </div>
+                <div class="xt-filter-nav padding-bottom-60" style="float:right;">
+                    <div class="xt-page-pagination">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination xt-pagination">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#" aria-label="Next"><i class="fa fa-caret-right"></i></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listHotProduct = (List<Model.EF.Product>)ViewBag.listHotProduct;
+    var listPromotionProduct = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProduct;
+    var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
+}
+<section class="xt-slider">
+    <div class="row">
+        <div class="col-md-3 category-hidden"></div>
+        <div class="col-md-9 col-md-offset-3 padding-o padding-sm">
+            <div class="flexslider xt-slider-inner">
+                <ul class="slides">
+                    @foreach (var item in listPromotionProductTop)
+                    {
+                        <li style="height:494px;">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="" />
+                            <div class="slide_text">
+                                <span class="slide-category">@item.NamePromotion</span>
+                                <h2 class="slide_title">@item.NameProduct</h2>
+                                <p class="slide_byline ">
+                                    @item.Description
+                                </p>
+                                <button class="btn btn-fill ">Mua ngay</button>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="xt-feature-product">
+    <div class="row section-separator">
+        <div class="section-title">
+            <h2>SẢN PHẨM ĐANG KHUYỄN MÃI</h2>
+            <span class="xt-title-bg"></span>
+        </div>
+        <div class="xt-each-feature">
+        @foreach (var item in listPromotionProduct)
+        {
+            <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
+                <div class="xt-feature">
+                    <div class="product-img">
+                        <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
+                        <span class="product-tag xt-uppercase">sale!</span>
+                        <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a></div>
+                    <div class="product-info">
+                        <div class="product-title">
+                            <span class="category xt-uppercase">Giá gốc</span>
+                            <span class="name xt-semibold">Sale</span>
+                        </div>
+                        <div class="price-tag pull-right">
+                            <span class="old-price"><del>@item.Price</del></span>
+                            <span class="new-price xt-semibold">@item.Discount</span>
+                        </div>
+                        <div class="xt-featured-caption">
+                            <div class="add-cart">
+                                <button class="btn btn-fill">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    </div>
+</section>
+<section class="xt-feature-product">
+    <div class="row section-separator">
+        <div class="section-title">
+            <h2>SẢN PHẨM HOT</h2>
+            <span class="xt-title-bg"></span>
+        </div>
+        <div class="xt-each-feature">
+        @foreach (var item in listHotProduct)
+        {
+                <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
+                    <div class="xt-feature">
+                        <div class="product-img">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
+                            <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-title">
+                                <span class="category xt-uppercase">Giá bán</span>
+                            </div>
+                            <div class="price-tag pull-right">
+                                <span class="new-price xt-semibold">@item.Price</span>
+                            </div>
+                            <div class="xt-featured-caption">
+                                <div class="add-cart">
+                                    <button class="btn btn-fill">Add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

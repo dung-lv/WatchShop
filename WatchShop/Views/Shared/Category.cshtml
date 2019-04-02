@@ -1,0 +1,89 @@
+﻿@model Model.ViewModel.CategoryTrademarkViewModel
+<div class="main-color-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 left-menu-wrapper">
+                <div class="xt-sidenav hidden-xs hidden-sm">
+                    <nav>
+                        <ul class="xt-side-menu">
+                            <li>
+                                <a href="">THƯƠNG HIỆU</a>
+                                <ul class="xt-dropdown">
+                                @foreach (var category in Model.listCategory)
+                                {
+                                    <li>
+                                        <a class="xt-nav-link" href=""><i class="fa flaticon-glasses"></i>@category.Name</a>
+                                        <ul class="mega-menu">
+                                        @foreach (var trademark in Model.listTrademark)
+                                        {
+                                            if (@category.ID_Category == @trademark.ID_Category)
+                                            {
+                                                <li>
+                                                    <ul class="xt-single-mega">
+                                                        <li><a href="/@category.Metatitle/@trademark.Metatitle/@trademark.ID_Trademark">@trademark.Name</a></li>
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                        </ul>
+                                    </li>
+                                }
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-10 col-xs-12 xt-header-search">
+                <div class="form-group xt-form search-bar  col-md-8 col-sm-8 col-xs-7 padding-right-o">
+                    <input type="text" class="form-control" placeholder="Search for snippets" />
+                </div>
+                <div class="form-group xt-form xt-search-cat col-md-4 col-sm-4 col-xs-5 padding-left-o ">
+                    <div class="xt-select xt-search-opt">
+                        <select class="xt-dropdown-search select-beast">
+                        @foreach (var category in Model.listCategory)
+                        {
+                            <option>@category.Name</option>
+                        }
+                        </select>
+                    </div>
+                    <div class="xt-search-opt xt-search-btn">
+                        <button type="button" class="btn btn-primary btn-search"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 col-sm-2 col-xs-2">
+                <div class="xt-cart">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                                <i class="fa flaticon-shopping-cart"></i>
+                            </a>
+                            <ul class="dropdown-menu xt-cart-items">
+                                <li>
+                                    <a href="">
+                                        <img src="/Assets/Client/images/4.jpg" alt="">
+                                        <h3>Đồng hồ apple</h3>
+                                        <span class="cart-price">$299</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" class="subtotal top-checkout">
+                                        <h3>Tổng giá : </h3>
+                                        <span class="total-price">$999</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/thanhtoan" class="process top-checkout">
+                                        <h3>Thanh toán</h3>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <span class="xt-item-count">1</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

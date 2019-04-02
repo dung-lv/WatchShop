@@ -1,0 +1,10 @@
+D:\WatchShop\Model\bin\Debug\Model.dll.config
+D:\WatchShop\Model\bin\Debug\Model.dll
+D:\WatchShop\Model\bin\Debug\Model.pdb
+D:\WatchShop\Model\bin\Debug\EntityFramework.dll
+D:\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\WatchShop\Model\bin\Debug\EntityFramework.xml
+D:\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\WatchShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\WatchShop\Model\obj\Debug\Model.dll
+D:\WatchShop\Model\obj\Debug\Model.pdb
