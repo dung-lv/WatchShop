@@ -26,12 +26,12 @@ namespace Model.DAO
             return db.Products.Where(x => x.Hot == true).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
 
-        public List<Product> getListProductByTrademark(int trademarkID, int top)
+        public List<Product> getListProductByTrademark(long trademarkID, int top)
         {
             return db.Products.Where(x => x.ID_Trademark == trademarkID).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
 
-        public Product getDetailProduct(int productID)
+        public Product getDetailProduct(long productID)
         {
             return db.Products.Where(x => x.ID_Product == productID).Single();
         }
