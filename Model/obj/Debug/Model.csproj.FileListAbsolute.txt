@@ -8,3 +8,15 @@ D:\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\WatchShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\WatchShop\Model\obj\Debug\Model.dll
 D:\WatchShop\Model\obj\Debug\Model.pdb
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\Model.dll.config
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\Model.dll
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\Model.pdb
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\EntityFramework.dll
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\EntityFramework.xml
+C:\Users\anh\Source\Repos\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\anh\Source\Repos\WatchShop\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\anh\Source\Repos\WatchShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\anh\Source\Repos\WatchShop\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\anh\Source\Repos\WatchShop\Model\obj\Debug\Model.dll
+C:\Users\anh\Source\Repos\WatchShop\Model\obj\Debug\Model.pdb

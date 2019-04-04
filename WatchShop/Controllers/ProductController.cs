@@ -17,9 +17,9 @@ namespace WatchShop.Controllers
             return View(model);
         }
 
-        public ActionResult DetailProduct()
+        public ActionResult DetailProduct(long ID_Product)
         {
-            var model = new ProductDAO().getDetailProduct(2);
+            var model = new ProductDAO().getDetailProduct(ID_Product);
             ViewBag.listProductByTrademark = new ProductDAO().getListProductByTrademark(2, 6);
             return View(model);
         }

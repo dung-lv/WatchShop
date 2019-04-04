@@ -55,6 +55,7 @@
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\PromotionDAO.cs" />
     <Compile Include="DAO\TrademarkDAO.cs" />
+    <Compile Include="DAO\UserDao.cs" />
     <Compile Include="EF\Category.cs" />
     <Compile Include="EF\Login.cs" />
     <Compile Include="EF\Order.cs" />

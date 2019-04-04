@@ -37,32 +37,33 @@
             <span class="xt-title-bg"></span>
         </div>
         <div class="xt-each-feature">
-        @foreach (var item in listPromotionProduct)
-        {
-            <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
-                <div class="xt-feature">
-                    <div class="product-img">
-                        <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                        <span class="product-tag xt-uppercase">sale!</span>
-                        <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span class="category xt-uppercase">Giá gốc</span>
-                            <span class="name xt-semibold">Sale</span>
+            @foreach (var item in listPromotionProduct)
+            {
+                <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
+                    <div class="xt-feature">
+                        <div class="product-img">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
+                            <span class="product-tag xt-uppercase">sale!</span>
+                            <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a>
                         </div>
-                        <div class="price-tag pull-right">
-                            <span class="old-price"><del>@item.Price</del></span>
-                            <span class="new-price xt-semibold">@item.Discount</span>
-                        </div>
-                        <div class="xt-featured-caption">
-                            <div class="add-cart">
-                                <button class="btn btn-fill">Add to cart</button>
+                        <div class="product-info">
+                            <div class="product-title">
+                                <span class="category xt-uppercase">Giá gốc</span>
+                                <span class="name xt-semibold">Sale</span>
+                            </div>
+                            <div class="price-tag pull-right">
+                                <span class="old-price"><del>@item.Price</del></span>
+                                <span class="new-price xt-semibold">@item.Discount</span>
+                            </div>
+                            <div class="xt-featured-caption">
+                                <div class="add-cart">
+                                    <button class="btn btn-fill">Add to cart</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
         </div>
     </div>
 </section>
@@ -73,8 +74,8 @@
             <span class="xt-title-bg"></span>
         </div>
         <div class="xt-each-feature">
-        @foreach (var item in listHotProduct)
-        {
+            @foreach (var item in listHotProduct)
+            {
                 <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
                     <div class="xt-feature">
                         <div class="product-img">
