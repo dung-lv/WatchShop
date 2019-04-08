@@ -16,12 +16,14 @@ namespace Model.EF
 
         public int? Quantity { get; set; }
 
-        public int? TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
 
-        public long? ID_ProductDetail { get; set; }
+        public long? ID_Product { get; set; }
+
+        public DateTime? CreateDate { get; set; }
 
         public virtual Order Order { get; set; }
 
-        public virtual ProductDetail ProductDetail { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

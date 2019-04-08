@@ -193,22 +193,19 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\ValConst.cs" />
+    <Compile Include="Common\ValSession.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Client\css\color\color-1.css" />
-    <Content Include="Assets\Client\css\color\color-2.css" />
-    <Content Include="Assets\Client\css\color\color-3.css" />
-    <Content Include="Assets\Client\css\color\color-4.css" />
-    <Content Include="Assets\Client\css\color\color-5.css" />
-    <Content Include="Assets\Client\css\color\color-6.css" />
-    <Content Include="Assets\Client\css\iconfont.css" />
     <Content Include="Assets\Client\css\responsive.css" />
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\fonts\flaticon.css" />
@@ -218,9 +215,6 @@
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\css\font-awesome.min.css" />
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\HELP-US-OUT.txt" />
-    <Content Include="Assets\Client\icons\linea\fonts\linea-basic-10.svg" />
-    <Content Include="Assets\Client\icons\linea\icons-reference.html" />
-    <Content Include="Assets\Client\icons\linea\styles.css" />
     <Content Include="Assets\Client\images\apple-icon-114x114.png" />
     <Content Include="Assets\Client\images\apple-icon-72x72.png" />
     <Content Include="Assets\Client\images\apple-icon.png" />
@@ -247,9 +241,8 @@
     <Content Include="Assets\Client\images\samsunggearfit2pro.jpg" />
     <Content Include="Assets\Client\images\SeikoSNKN85J1.jpg" />
     <Content Include="Assets\Client\images\Skagen584LSLM.jpg" />
+    <Content Include="Assets\Client\js\custom.js" />
     <Content Include="Assets\Client\js\init.js" />
-    <Content Include="Assets\Client\less\responsive.css" />
-    <Content Include="Assets\Client\less\style.css" />
     <Content Include="Assets\Client\plugins\css\ajax-loader.gif" />
     <Content Include="Assets\Client\plugins\css\animate.css" />
     <Content Include="Assets\Client\plugins\css\bootstrap-dropdownhover.min.css" />
@@ -312,6 +305,7 @@
     <Content Include="Assets\Client\plugins\js\style-switch.js" />
     <Content Include="Assets\Client\plugins\js\validator.min.js" />
     <Content Include="Assets\Client\plugins\js\wow.min.js" />
+    <Content Include="Assets\Client\template\order.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -325,8 +319,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Client\.DS_Store" />
-    <Content Include="Assets\Client\css\bootstrap\variables.less" />
     <Content Include="Assets\Client\fonts\Flaticon.eot" />
     <Content Include="Assets\Client\fonts\Flaticon.ttf" />
     <Content Include="Assets\Client\fonts\Flaticon.woff" />
@@ -364,26 +356,9 @@
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Assets\Client\icons\font-awesome-4.7.0\scss\_variables.scss" />
-    <Content Include="Assets\Client\icons\linea\fonts\linea-basic-10.eot" />
-    <Content Include="Assets\Client\icons\linea\fonts\linea-basic-10.ttf" />
-    <Content Include="Assets\Client\icons\linea\fonts\linea-basic-10.woff" />
-    <Content Include="Assets\Client\less\bootstrap\variables.less" />
-    <Content Include="Assets\Client\less\color\color-1.less" />
-    <Content Include="Assets\Client\less\color\color-2.less" />
-    <Content Include="Assets\Client\less\color\color-3.less" />
-    <Content Include="Assets\Client\less\color\color-4.less" />
-    <Content Include="Assets\Client\less\color\color-5.less" />
-    <Content Include="Assets\Client\less\color\color-6.less" />
-    <Content Include="Assets\Client\less\css-tree.less" />
-    <Content Include="Assets\Client\less\defult-style.less" />
-    <Content Include="Assets\Client\less\less-function.less" />
-    <Content Include="Assets\Client\less\responsive.less" />
-    <Content Include="Assets\Client\less\style.less" />
-    <Content Include="Assets\Client\less\variable.less" />
     <Content Include="Assets\Client\plugins\css\fonts\slick.eot" />
     <Content Include="Assets\Client\plugins\css\fonts\slick.ttf" />
     <Content Include="Assets\Client\plugins\css\fonts\slick.woff" />
-    <Content Include="Assets\Client\images\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -408,11 +383,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Category.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\DetailProduct.cshtml" />
+    <Content Include="Views\Product\DetailProductById.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Assets\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -29,14 +29,16 @@ namespace Model.EF
         [StringLength(10)]
         public string Status { get; set; }
 
-        [StringLength(100)]
-        public string Create_Date { get; set; }
+        public DateTime? CreateDate { get; set; }
 
         [StringLength(100)]
         public string Transport { get; set; }
 
         [Column(TypeName = "ntext")]
         public string Note { get; set; }
+
+        [StringLength(200)]
+        public string Email { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

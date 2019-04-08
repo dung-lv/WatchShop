@@ -3,6 +3,9 @@
     ViewBag.Title = "Watch Shop";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
+    var totalPage = (int)ViewBag.totalPage;
+    var category = (Model.EF.Category)ViewBag.category;
+    var trademark = (Model.EF.Trademark)ViewBag.trademark;
 }
 <section class="xt-slider">
     <div class="row">
@@ -20,7 +23,7 @@
                                 <p class="slide_byline ">
                                     @item.Description
                                 </p>
-                                <a href="/@item.Metatitle/@item.ID_Product" class="btn btn-fill ">Mua ngay</a>
+                                <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product" class="btn btn-fill ">Mua ngay</a>
                             </div>
                         </li>
                     }
@@ -29,16 +32,20 @@
         </div>
     </div>
 </section>
-<div class="xt-product-subpage">
+<div class="xt-product-subpage" style="margin-top: 10px;">
     <div class="row section-separator">
         <div class="xt-filter-nav product-sidebar">
             <div class="price-range" style="width:400px;">
                 <h3>Price</h3>
-                <div class="each-price-range">
-                    <div id="xt-price-range"></div>
-                    <input type="text" id="amount" class="price-range-amount">
-                    <button class="btn btn-fill">Lọc</button>
-                </div>
+                @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+                {
+                    <div class="each-price-range">
+                        <div id="xt-price-range"></div>
+                        <input type="text" style="display: none;" value="@category.ID_Category" name="id"/>
+                        <input type="text" id="amount" class="price-range-amount" name="price">
+                        <button type="submit" class="btn btn-fill">Lọc</button>
+                    </div>
+                }
             </div>
         </div>
         <div class="clearfix"></div>
@@ -51,7 +58,7 @@
                         <div class="xt-feature">
                             <div class="product-img">
                                 <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                                <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+                                <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
                             </div>
                             <div class="product-info">
                                 <div class="product-title">
@@ -62,7 +69,7 @@
                                 </div>
                                 <div class="xt-featured-caption">
                                     <div class="add-cart">
-                                        <button class="btn btn-fill">Thêm vào giỏ hàng</button>
+                                        <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm vào giỏ</a>
                                     </div>
                                 </div>
                             </div>
@@ -78,11 +85,17 @@
                     <div class="xt-page-pagination">
                         <nav aria-label="Page navigation">
                             <ul class="pagination xt-pagination">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#" aria-label="Next"><i class="fa fa-caret-right"></i></a></li>
+                                @for (var i = 1; i <= totalPage; i++)
+                                {
+                                    if(trademark != null)
+                                    {
+                                        <li><a href="/thuonghieu/@trademark.Metatitle?id=@trademark.ID_Trademark&page=@i">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="/danhmuc/@category.Metatitle?id=@category.ID_Category&page=@i">@i</a></li>
+                                    }
+                                }
                             </ul>
                         </nav>
                     </div>

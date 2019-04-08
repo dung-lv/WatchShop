@@ -20,5 +20,10 @@ namespace Model.DAO
         {
             return db.Trademarks.OrderBy(x => x.Name).ToList();
         }
+
+        public Trademark getDetailTrademark(long id)
+        {
+            return db.Trademarks.SingleOrDefault(x => x.ID_Trademark == id);
+        }
     }
 }

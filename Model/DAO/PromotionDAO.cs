@@ -15,12 +15,12 @@ namespace Model.DAO
             db = new WatchShopDBContext();
         }
 
-        public List<PromotionViewModel> getTopById(int id)
+        public List<PromotionViewModel> getPromotionProduct(int prmotionID, int top)
         {
             var model = from prom in db.Promotions
                         join prod in db.Products
                         on prom.ID_Promotion equals prod.ID_Promotion
-                        where prom.ID_Promotion == id
+                        where prom.ID_Promotion == prmotionID
                         select new PromotionViewModel()
                         {
                             ID_Promotion = prom.ID_Promotion,
@@ -35,28 +35,14 @@ namespace Model.DAO
                             NameProduct = prod.Name,
                             Metatitle = prod.Metatitle
                         };
-            return model.Take(3).ToList();
-        }
-
-        public List<PromotionViewModel> getAllById(int id)
-        {
-            var model = from prom in db.Promotions
-                        join prod in db.Products
-                        on prom.ID_Promotion equals prod.ID_Promotion
-                        where prom.ID_Promotion == id
-                        select new PromotionViewModel()
-                        {
-                            ID_Promotion = prom.ID_Promotion,
-                            NamePromotion = prom.Name,
-                            StartTime = prom.StartTime,
-                            EndTime = prom.EndTime,
-                            Price = prod.Price,
-                            Description = prom.Description,
-                            Discount = prod.Discount,
-                            Avatar = prod.Avatar,
-                            NameProduct = prod.Name
-                        };
-            return model.ToList();
+            if(top != 0)
+            {
+                return model.Take(top).ToList();
+            }
+            else
+            {
+                return model.ToList();
+            }    
         }
     }
 }

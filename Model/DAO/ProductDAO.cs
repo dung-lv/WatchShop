@@ -15,25 +15,68 @@ namespace Model.DAO
         {
             db = new WatchShopDBContext();
         }
-        
+
         public List<Product> getAll()
         {
             return db.Products.ToList();
         }
 
-        public List<Product> getListProductByHot(int top)
+        public List<Product> getListProductHot(int top)
         {
             return db.Products.Where(x => x.Hot == true).OrderByDescending(x => x.CreateDate).Take(top).ToList();
         }
 
-        public List<Product> getListProductByTrademark(int trademarkID, int top)
+        public List<Product> getListProductByCategory(long CategoryID, int first, int maxResult, int priceFrom, int priceTo)
         {
-            return db.Products.Where(x => x.ID_Trademark == trademarkID).OrderByDescending(x => x.CreateDate).Take(top).ToList();
+            List<long> listtrademarkID = new List<long>();
+            foreach (var trademark in db.Trademarks.Where(x => x.ID_Category == CategoryID).ToList())
+            {
+                listtrademarkID.Add(trademark.ID_Trademark);
+            }
+            if(maxResult == 0)
+            {
+                return db.Products.Where(x => listtrademarkID.Contains(x.ID_Trademark)).OrderByDescending(x => x.CreateDate).ToList();
+            }
+            else
+            {
+                if(priceTo != 0)
+                {
+                    return db.Products.Where(x => listtrademarkID.Contains(x.ID_Trademark) && x.Price >= priceFrom && x.Price <= priceTo).OrderByDescending(x => x.CreateDate).Skip(first).Take(maxResult).ToList();
+                }
+                else
+                {
+                    return db.Products.Where(x => listtrademarkID.Contains(x.ID_Trademark)).OrderByDescending(x => x.CreateDate).Skip(first).Take(maxResult).ToList();
+                }
+            }
         }
 
-        public Product getDetailProduct(int productID)
+        public List<Product> getListProductByTrademark(long trademarkID, int first, int maxResult, int priceFrom, int priceTo)
         {
-            return db.Products.Where(x => x.ID_Product == productID).Single();
+            if (maxResult == 0)
+            {
+                return db.Products.Where(x => x.ID_Trademark == trademarkID).OrderByDescending(x => x.CreateDate).ToList();
+            }
+            else
+            {
+                if (priceTo != 0)
+                {
+                    return db.Products.Where(x => x.ID_Trademark == trademarkID && x.Price >= priceFrom && x.Price <= priceTo).OrderByDescending(x => x.CreateDate).Skip(first).Take(maxResult).ToList();
+                }
+                else
+                {
+                    return db.Products.Where(x => x.ID_Trademark == trademarkID).OrderByDescending(x => x.CreateDate).Skip(first).Take(maxResult).ToList();
+                }
+            }
+        }
+
+        public Product getDetailProductById(long productID)
+        {
+            return db.Products.SingleOrDefault(x => x.ID_Product == productID);
+        }
+
+        public Product getDetailProductByName(string name)
+        {
+            return db.Products.SingleOrDefault(x => x.Name == name);
         }
     }
 }

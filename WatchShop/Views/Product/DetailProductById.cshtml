@@ -1,0 +1,163 @@
+﻿@model Model.EF.Product
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listProductByTrademark = (List<Model.EF.Product>)ViewBag.listProductByTrademark;
+}
+
+<section class="xt-xt-single-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 visible-xs visible-sm padding-right-o"></div>
+            <div class="col-md-9 col-md-offset-3 padding-o">
+                <div class="xt-product-inner">
+                    <div class="col-md-5">
+                        <div role="tabpanel" class="tab-pane active xt-product-tab">
+                            <div class="tab-content xt-pro-small-image">
+                                <div role="tabpanel" id="xt-pro-3" class="tab-pane fade active in">
+                                    <img src="/Assets/Client/images/@Model.Avatar" alt="" class="img-responsive" style="width:100%;">
+                                </div>
+                            </div>
+                            <ul id="tablist" class="xt-pro-thumbs-list" role="tablist">
+                                <li role="presentation" class="">
+                                    <a href="#xt-pro-1" role="tab" data-toggle="tab" aria-expanded="false">
+                                        <img src="/Assets/Client/images/s-1.jpg" alt="product thumbs">
+                                    </a>
+                                </li>
+                                <li role="presentation" class="">
+                                    <a href="#xt-pro-2" role="tab" data-toggle="tab" aria-expanded="false">
+                                        <img src="/Assets/Client/images/s-2.jpg" alt="product thumbs">
+                                    </a>
+                                </li>
+                                <li role="presentation" class="active">
+                                    <a href="#xt-pro-3" role="tab" data-toggle="tab" aria-expanded="true">
+                                        <img src="/Assets/Client/images/s-3.jpg" alt="product thumbs">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="each-product-info">
+                            <h3>@Model.Name</h3>
+                            <span class="single-price"><b>Giá bán:</b> @Model.Price</span>
+                            <p>@Model.Description</p>
+                            <div class="product-add-cart">
+                                <a href="/themgiohang?id=@Model.ID_Product&quantity=1" class="btn btn-fill">Thêm vào giỏ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="clearfix"></div>
+<div class="row section-separator" style="padding-top:15px;">
+    <aside class="col-md-3"></aside>
+    <div class="col-md-9">
+        <div class="xt-single-item-info" style="padding-left:12px;">
+            <ul class="nav nav-tabs xt-single-item-tab" role="tablist" id="xt-product-dec-nav">
+                <li role="presentation" class="active">
+                    <a href="#" aria-controls="description" role="tab" data-toggle="tab">Description</a>
+                </li>
+                <li role="presentation" class="">
+                    <a href="#" aria-controls="review" role="tab" data-toggle="tab">Review</a>
+                </li>
+            </ul>
+            <div class="tab-content xt-tab-content">
+                <div role="tabpanel" class="tab-pane xt-pane xt-description fade in active" id="description">
+                    <h3>Product Description</h3>
+                    <b>Description</b>
+                    <p>
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                        Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
+                        amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque
+                        habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
+                        feugiat vitae, ultricies eget,
+                    </p>
+                    <ul>
+                        <li> 73.6% Cotton </li>
+                        <li> 24.5% Polyester </li>
+                        <li> 1.9% Elastane </li>
+                    </ul>
+                    <p>
+                        Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique
+                        senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane xt-pane xt-review fade" id="review">
+                    <h3>Product Review</h3>
+                    <p>
+                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
+                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry
+                        richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
+                        butcher voluptate nisi qui
+                    </p>
+                    <ul class="item-review">
+                        <li>
+                            <img src="/Assets/Client/images/rating.png" alt="">
+                            <h4>Angel Brown</h4>
+                            <p>
+                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
+                                butcher voluptate nisi qui
+                            </p>
+                        </li>
+                        <li>
+                            <img src="/Assets/Client/images/rating.png" alt="">
+                            <h4>Mark Monster</h4>
+                            <p>
+                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
+                                butcher voluptate nisi qui
+                            </p>
+                        </li>
+                        <li>
+                            <img src="/Assets/Client/images/rating.png" alt="">
+                            <h4>Lol Brown</h4>
+                            <p>
+                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
+                                butcher voluptate nisi qui
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="xt-feature-product">
+            <div class="section-separator">
+                <div class="section-title">
+                    <h2>SẢN PHẨM LIÊN QUAN</h2>
+                    <span class="xt-title-bg"></span>
+                </div>
+                <div class="xt-each-feature">
+                    @foreach (var item in listProductByTrademark)
+                    {
+                        <div class="col-md-4 col-sm-4">
+                            <div class="xt-feature">
+                                <div class="product-img">
+                                    <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive">
+                                    <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+                                </div>
+                                <div class="product-info">
+                                    <div class="product-title">
+                                        <span class="category xt-uppercase">Giá bán</span>
+                                    </div>
+                                    <div class="price-tag pull-right">
+                                        <span class="new-price xt-semibold">@item.Price</span>
+                                </div>
+                                <div class="xt-featured-caption">
+                                    <div class="add-cart">
+                                        <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm giỏ hàng</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

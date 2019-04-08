@@ -21,7 +21,7 @@
                                 <p class="slide_byline ">
                                     @item.Description
                                 </p>
-                                <button class="btn btn-fill ">Mua ngay</button>
+                                <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Mua ngay</a>
                             </div>
                         </li>
                     }
@@ -44,7 +44,7 @@
                     <div class="product-img">
                         <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
                         <span class="product-tag xt-uppercase">sale!</span>
-                        <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a></div>
+                        <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a></div>
                     <div class="product-info">
                         <div class="product-title">
                             <span class="category xt-uppercase">Giá gốc</span>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="xt-featured-caption">
                             <div class="add-cart">
-                                <button class="btn btn-fill">Add to cart</button>
+                                <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm giỏ hàng</a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="xt-feature">
                         <div class="product-img">
                             <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                            <a href="/@item.Metatitle/@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+                            <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
                         </div>
                         <div class="product-info">
                             <div class="product-title">
@@ -90,7 +90,7 @@
                             </div>
                             <div class="xt-featured-caption">
                                 <div class="add-cart">
-                                    <button class="btn btn-fill">Add to cart</button>
+                                    <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm giỏ hàng</a>
                                 </div>
                             </div>
                         </div>

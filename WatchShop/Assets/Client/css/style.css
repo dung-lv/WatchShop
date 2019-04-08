@@ -2012,7 +2012,6 @@ nav ul.xt-side-menu > li > ul.xt-dropdown {
 }
 .xt-cart-items {
   border-radius: 0;
-  padding: 20px 0;
 }
 .xt-cart-items li a {
   padding: 1px 20px;
@@ -2045,8 +2044,7 @@ nav ul.xt-side-menu > li > ul.xt-dropdown {
   margin-top: 14px;
 }
 .xt-cart-items li a.top-checkout {
-  height: 60px;
-  line-height: 60px;
+  height: 25px;
   background: #000;
   color: #fff;
 }

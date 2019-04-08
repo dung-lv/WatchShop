@@ -17,11 +17,8 @@ namespace Model.EF
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductColor> ProductColors { get; set; }
-        public virtual DbSet<ProductDetail> ProductDetails { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Trademark> Trademarks { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
@@ -49,13 +46,17 @@ namespace Model.EF
                 .WithRequired(e => e.Login)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<OrderDetail>()
+                .Property(e => e.TotalPrice)
+                .HasPrecision(18, 0);
+
             modelBuilder.Entity<Order>()
                 .Property(e => e.Phone)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order>()
-                .Property(e => e.Create_Date)
+                .Property(e => e.Email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Order>()
@@ -64,7 +65,19 @@ namespace Model.EF
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
                 .Property(e => e.Avatar)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Discount)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Metatitle)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Role>()

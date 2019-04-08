@@ -19,5 +19,16 @@ namespace Model.DAO
         {
             return db.Categories.OrderBy(x => x.Name).ToList();
         }
+
+        public Category getDetailCategory(long id)
+        {
+            return db.Categories.SingleOrDefault(x => x.ID_Category == id);
+        }
+
+        public Category getDetailCategoryByTrademark(long id)
+        {
+            Trademark trademark = db.Trademarks.SingleOrDefault(x => x.ID_Trademark == id);
+            return db.Categories.SingleOrDefault(x => x.ID_Category == trademark.ID_Category);
+        }
     }
 }

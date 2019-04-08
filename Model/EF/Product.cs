@@ -12,7 +12,7 @@ namespace Model.EF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            ProductDetails = new HashSet<ProductDetail>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         [Key]
@@ -32,24 +32,26 @@ namespace Model.EF
         [Column(TypeName = "xml")]
         public string Images { get; set; }
 
+        public int? Quantity { get; set; }
+
         public bool? Hot { get; set; }
+
+        public decimal? Discount { get; set; }
 
         [StringLength(100)]
         public string Metatitle { get; set; }
 
-        public long ID_Trademark { get; set; }
-
         public DateTime? CreateDate { get; set; }
+
+        public long ID_Trademark { get; set; }
 
         public long? ID_Promotion { get; set; }
 
-        public decimal? Discount { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         public virtual Trademark Trademark { get; set; }
 
         public virtual Promotion Promotion { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductDetail> ProductDetails { get; set; }
     }
 }
