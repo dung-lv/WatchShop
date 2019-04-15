@@ -15,12 +15,22 @@ namespace Model.DAO
             db = new WatchShopDBContext();
         }
 
-        public List<PromotionViewModel> getPromotionProduct(int prmotionID, int top)
+        public List<Promotion> getNewPromotions()
+        {
+            return db.Promotions.Where(x => x.EndTime > DateTime.Now).OrderByDescending(x => x.StartTime).ToList();
+        }
+
+        public Promotion getPromotionById(int promotionID)
+        {
+            return db.Promotions.SingleOrDefault(x => x.ID_Promotion == promotionID);
+        }
+
+        public List<PromotionViewModel> getPromotionProduct(int promotionID, int top)
         {
             var model = from prom in db.Promotions
                         join prod in db.Products
                         on prom.ID_Promotion equals prod.ID_Promotion
-                        where prom.ID_Promotion == prmotionID
+                        where prom.ID_Promotion == promotionID
                         select new PromotionViewModel()
                         {
                             ID_Promotion = prom.ID_Promotion,

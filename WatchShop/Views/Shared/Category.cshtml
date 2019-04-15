@@ -59,16 +59,23 @@
                                 <i class="fa flaticon-shopping-cart"></i>
                             </a>
                             <ul class="dropdown-menu xt-cart-items">
-                                @foreach (var item in carts)
+                                @if (@Session[ValSession.CART_SESSION] == null)
                                 {
-                                    <li>
-                                        <a href="">
-                                            <img src="/Assets/Client/images/@item.Product.Avatar" alt="">
-                                            <h3>@item.Product.Name</h3>
-                                            <span class="cart-price">@item.Product.Price - @item.Quantity</span>
-                                        </a>
-                                    </li>
+                                    <li style="color: black; text-align: center;">Không có sản phẩm</li>
+                                }else
+                                {
+                                    foreach (var item in carts)
+                                    {
+                                        <li>
+                                            <a href="">
+                                                <img src="/Assets/Client/images/@item.Product.Avatar" alt="">
+                                                <h3>@item.Product.Name</h3>
+                                                <span class="cart-price">@item.Product.Price - @item.Quantity</span>
+                                            </a>
+                                        </li>
+                                    }
                                 }
+                                
                                 <li>
                                     <a href="/giohang" class="process top-checkout">
                                         <h3>Xác nhận thanh toán</h3>

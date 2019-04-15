@@ -10,6 +10,7 @@ namespace Model.DAO
     public class CategoryDAO
     {
         private WatchShopDBContext db = null;
+
         public CategoryDAO()
         {
             db = new WatchShopDBContext();

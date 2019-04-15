@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Watch Shop </title>
+    <meta charset="utf-8">
+    <meta name="description" content="app landing page template" />
+    <meta name="keywords" content="watchshop" />
+    <meta name="developer" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/Assets/Client/icons/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Assets/Client/fonts/flaticon.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/animate.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/owl.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/flexslider.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/selectize.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css//selectize.bootstrap3.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/bootstrap-dropdownhover.min.css">
+    <link rel="stylesheet" href="/Assets/Client/plugins/css/meanmenu.css">
+    <link rel="stylesheet" href="/Assets/Client/css/style.css">
+    <link rel="stylesheet" href="/Assets/Client/css/responsive.css">
+</head>
+<body>
+    <header id="xt-home" class="xt-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="user-nav pull-right col-md-6 col-sm-6 col-xs-12">
+                        <ul>
+                            <li><a href="#">Đăng ký</a></li>
+                            <li><a href="/Login/Index">Đăng nhập</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-navigation">
+            <nav class="navbar navbar-fixed-top nav-scroll">
+                <div class="container">
+                    <div class="row">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span aria-hidden="true" class="icon"></span>
+                            </button>
+                            <a class="navbar-brand" href="/"><img src="/Assets/Client/images/logo.png" alt="" class="img-responsive"></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="js-navbar-menu">
+                            <ul class="nav navbar-nav navbar-right ep-mobile-menu" id="navbar-nav">
+                                <li class="active"><a href="/">TRANG CHỦ</a></li>
+                                <li><a href="/gioithieu">GIỚI THIỆU</a></li>
+                                <li><a href="/lienhe">LIÊN HỆ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        @{ Html.RenderAction("Category", "Home");}
+    </header>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @{ Html.RenderAction("Footer", "Home");}
+    <script src="/Assets/Client/plugins/js/jquery-1.11.3.min.js"></script>
+    <script src="/Assets/Client/plugins/js/bootstrap.min.js"></script>
+    <script src="/Assets/Client/plugins/js/meanmenu.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.ajaxchimp.min.js"></script>
+    <script src="/Assets/Client/plugins/js/wow.min.js"></script>
+    <script src="/Assets/Client/plugins/js/owl.carousel.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.flexslider-min.js"></script>
+    <script src="/Assets/Client/plugins/js/bootstrap-dropdownhover.min.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery-ui.min.js"></script>
+    <script src="/Assets/Client/plugins/js/validator.min.js"></script>
+    <script src="/Assets/Client/plugins/js/smooth-scroll.js"></script>
+    <script src="/Assets/Client/plugins/js/jquery.fancybox.min.js"></script>
+    <script src="/Assets/Client/plugins/js/standalone/selectize.js"></script>
+    <script src="/Assets/Client/js/init.js"></script>
+    <script src="/Assets/Client/js/custom.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+        function initMap() {
+            var uluru = { lat: 21.046300, lng: 105.793266 };
+            var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+                zoom: 18,
+                center: uluru
+            });
+            var contentString = 'Hoang Quoc Viet, Cau Giay, Ha Noi';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'Địa chỉ'
+            });
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+</body>
+</html>

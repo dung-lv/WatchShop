@@ -1,7 +1,7 @@
 ﻿@model Model.EF.Product
 @{
     ViewBag.Title = "Chi tiết sản phẩm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout_Client.cshtml";
     var listProductByTrademark = (List<Model.EF.Product>)ViewBag.listProductByTrademark;
 }
 
@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 visible-xs visible-sm padding-right-o"></div>
-            <div class="col-md-9 col-md-offset-3 padding-o">
+            <div class="col-md-9 col-md-offset-3 padding-o" style="background-color: aliceblue;">
                 <div class="xt-product-inner">
                     <div class="col-md-5">
                         <div role="tabpanel" class="tab-pane active xt-product-tab">
@@ -54,72 +54,16 @@
 </section>
 <div class="clearfix"></div>
 <div class="row section-separator" style="padding-top:15px;">
-    <aside class="col-md-3"></aside>
-    <div class="col-md-9">
+    <div class="col-md-12" style="width: 103%;">
         <div class="xt-single-item-info" style="padding-left:12px;">
             <ul class="nav nav-tabs xt-single-item-tab" role="tablist" id="xt-product-dec-nav">
                 <li role="presentation" class="active">
-                    <a href="#" aria-controls="description" role="tab" data-toggle="tab">Description</a>
-                </li>
-                <li role="presentation" class="">
-                    <a href="#" aria-controls="review" role="tab" data-toggle="tab">Review</a>
+                    <a href="#" aria-controls="description" role="tab" data-toggle="tab">Mô tả sản phẩm</a>
                 </li>
             </ul>
             <div class="tab-content xt-tab-content">
                 <div role="tabpanel" class="tab-pane xt-pane xt-description fade in active" id="description">
-                    <h3>Product Description</h3>
-                    <b>Description</b>
-                    <p>
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
-                        amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque
-                        habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,
-                        feugiat vitae, ultricies eget,
-                    </p>
-                    <ul>
-                        <li> 73.6% Cotton </li>
-                        <li> 24.5% Polyester </li>
-                        <li> 1.9% Elastane </li>
-                    </ul>
-                    <p>
-                        Aenean ultricies mi vitae est. Mauris placerat eleifend leo.Pellentesque habitant morbi tristique
-                        senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-                    </p>
-                </div>
-                <div role="tabpanel" class="tab-pane xt-pane xt-review fade" id="review">
-                    <h3>Product Review</h3>
-                    <p>
-                        retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.
-                        Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry
-                        richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
-                        butcher voluptate nisi qui
-                    </p>
-                    <ul class="item-review">
-                        <li>
-                            <img src="/Assets/Client/images/rating.png" alt="">
-                            <h4>Angel Brown</h4>
-                            <p>
-                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
-                                butcher voluptate nisi qui
-                            </p>
-                        </li>
-                        <li>
-                            <img src="/Assets/Client/images/rating.png" alt="">
-                            <h4>Mark Monster</h4>
-                            <p>
-                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
-                                butcher voluptate nisi qui
-                            </p>
-                        </li>
-                        <li>
-                            <img src="/Assets/Client/images/rating.png" alt="">
-                            <h4>Lol Brown</h4>
-                            <p>
-                                Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel,
-                                butcher voluptate nisi qui
-                            </p>
-                        </li>
-                    </ul>
+                    <p>@Model.Content</p>
                 </div>
             </div>
         </div>

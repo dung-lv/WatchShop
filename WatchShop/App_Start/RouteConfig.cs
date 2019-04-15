@@ -56,10 +56,24 @@ namespace WatchShop
             );
 
             routes.MapRoute(
+                name: "About",
+                url: "gioithieu",
+                defaults: new { controller = "About", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WatchShop.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Contact",
+                url: "lienhe",
+                defaults: new { controller = "Feedback", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WatchShop.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] {"WatchShop.Controllers"}
+                namespaces: new[] { "WatchShop.Controllers" }
             );
         }
     }

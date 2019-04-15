@@ -12,7 +12,10 @@ namespace Model.EF
         {
         }
 
+        public virtual DbSet<About> Abouts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
@@ -24,6 +27,10 @@ namespace Model.EF
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<About>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Category>()
                 .Property(e => e.Metatitle)
                 .IsUnicode(false);
@@ -32,6 +39,22 @@ namespace Model.EF
                 .HasMany(e => e.Trademarks)
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Contact>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Contact>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Feedback>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Feedback>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Login>()
                 .Property(e => e.Username)

@@ -78,5 +78,24 @@ namespace Model.DAO
         {
             return db.Products.SingleOrDefault(x => x.Name == name);
         }
+
+        public long InsertProduct(Product pro)
+        {
+            db.Products.Add(pro);
+            db.SaveChanges();
+            return pro.ID_Product;
+        }
+
+        public void DeleteProduct(long id)
+        {
+            Product pro = db.Products.Find(id);
+            db.Products.Remove(pro);
+            db.SaveChanges();
+        }
+
+        public List<string> ListName(string keyword)
+        {
+            return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
+        }
     }
 }
