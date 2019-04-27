@@ -41,19 +41,6 @@
         })
     });
 
-    //$('.btn-search').click(function () {
-    //    var txtSearch = $('.txt-search').val();
-    //    $.ajax({
-    //        data: { txtSearch: txtSearch },
-    //        url: '/Product/DetailProductByName',
-    //        dataType: 'text',
-    //        type: 'POST',
-    //        success: function () {
-                
-    //        }
-    //    })
-    //});
-
     //$('.numberPage').click(function () {
     //    var numberPage = $(this).text();
     //    var category = $('#category-product').text();

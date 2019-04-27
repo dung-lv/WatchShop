@@ -327,6 +327,7 @@
     <Content Include="Assets\Admin\vendor\vector-map\jqvmap.min.css" />
     <Content Include="Assets\Admin\vendor\wow\animate.css" />
     <Content Include="Assets\Admin\vendor\wow\wow.min.js" />
+    <Content Include="Assets\Client\css\jquery-ui.css" />
     <Content Include="Assets\Client\css\responsive.css" />
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\fonts\flaticon.css" />
@@ -363,8 +364,10 @@
     <Content Include="Assets\Client\images\samsunggearfit2pro.jpg" />
     <Content Include="Assets\Client\images\SeikoSNKN85J1.jpg" />
     <Content Include="Assets\Client\images\Skagen584LSLM.jpg" />
+    <Content Include="Assets\Client\js\search.js" />
     <Content Include="Assets\Client\js\custom.js" />
     <Content Include="Assets\Client\js\init.js" />
+    <Content Include="Assets\Client\js\jquery-ui.js" />
     <Content Include="Assets\Client\plugins\css\ajax-loader.gif" />
     <Content Include="Assets\Client\plugins\css\animate.css" />
     <Content Include="Assets\Client\plugins\css\bootstrap-dropdownhover.min.css" />
@@ -617,6 +620,7 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Admin\CategoryManager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

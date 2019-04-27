@@ -18,23 +18,6 @@
                                     <img src="/Assets/Client/images/@Model.Avatar" alt="" class="img-responsive" style="width:100%;">
                                 </div>
                             </div>
-                            <ul id="tablist" class="xt-pro-thumbs-list" role="tablist">
-                                <li role="presentation" class="">
-                                    <a href="#xt-pro-1" role="tab" data-toggle="tab" aria-expanded="false">
-                                        <img src="/Assets/Client/images/s-1.jpg" alt="product thumbs">
-                                    </a>
-                                </li>
-                                <li role="presentation" class="">
-                                    <a href="#xt-pro-2" role="tab" data-toggle="tab" aria-expanded="false">
-                                        <img src="/Assets/Client/images/s-2.jpg" alt="product thumbs">
-                                    </a>
-                                </li>
-                                <li role="presentation" class="active">
-                                    <a href="#xt-pro-3" role="tab" data-toggle="tab" aria-expanded="true">
-                                        <img src="/Assets/Client/images/s-3.jpg" alt="product thumbs">
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-md-7">
@@ -76,10 +59,10 @@
                 <div class="xt-each-feature">
                     @foreach (var item in listProductByTrademark)
                     {
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
                             <div class="xt-feature">
                                 <div class="product-img">
-                                    <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive">
+                                    <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
                                     <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
                                 </div>
                                 <div class="product-info">

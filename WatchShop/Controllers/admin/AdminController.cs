@@ -12,12 +12,14 @@ namespace WatchShop.Controllers.admin
     public class AdminController : Controller
     {
         private ProductDAO productDAO = null;
+        private CategoryDAO categoryDAO = null;
         private PromotionDAO promotionDAO = null;
         private TrademarkDAO trademarkDAO = null;
 
         public AdminController()
         {
             productDAO = new ProductDAO();
+            categoryDAO = new CategoryDAO();
             promotionDAO = new PromotionDAO();
             trademarkDAO = new TrademarkDAO();
         }
@@ -58,6 +60,12 @@ namespace WatchShop.Controllers.admin
             {
                 status = true
             });
+        }
+
+        public ActionResult CategoryManager()
+        {
+            var model = categoryDAO.getAll();
+            return View(model);
         }
     }
 }

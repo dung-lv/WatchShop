@@ -32,9 +32,6 @@ namespace Model.EF
         [StringLength(200)]
         public string Avatar { get; set; }
 
-        [Column(TypeName = "xml")]
-        public string Images { get; set; }
-
         public int? Quantity { get; set; }
 
         public bool? Hot { get; set; }

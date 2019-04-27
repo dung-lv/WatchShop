@@ -31,7 +31,7 @@ namespace WatchShop.Controllers
         {
             var maxResult = 4;
             var x = price;
-            var first = (maxResult * page + 1 + 1) - maxResult;
+            var first = (maxResult * page) - maxResult;
             if (price != "")
             {
                 price = Regex.Replace(price, @"[\s+]", "");
@@ -70,18 +70,27 @@ namespace WatchShop.Controllers
         public ActionResult DetailProductById(long id)
         {
             var model = productDAO.getDetailProductById(id);
-            //ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(model.ID_Trademark, 0, 8, 0, 0);
-            ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(1, 0, 8, 0, 0);
+            ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(model.ID_Trademark, 0, 8, 0, 0);
+            //ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(1, 0, 8, 0, 0);
             return View(model);
         }
 
-        [HttpPost]
         public ActionResult DetailProductByName(string name)
         {
             var model = productDAO.getDetailProductByName(name);
-            //ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(model.ID_Trademark, 0, 8, 0, 0);
-            ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(1, 0, 8, 0, 0);
+            ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(model.ID_Trademark, 0, 8, 0, 0);
+            //ViewBag.listProductByTrademark = productDAO.getListProductByTrademark(1, 0, 8, 0, 0);
             return View("DetailProductById", model);
+        }
+
+        public JsonResult ListName(string q)
+        {
+            var data = productDAO.ListName(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
         }
     }
 }
