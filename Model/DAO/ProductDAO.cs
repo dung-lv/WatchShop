@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using PagedList;
 
 namespace Model.DAO
 {
@@ -96,6 +97,11 @@ namespace Model.DAO
         public List<string> ListName(string keyword)
         {
             return db.Products.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
+        }
+
+        public IEnumerable<Product> ListAllPaging(int page = 1, int pageSize = 4)
+        {
+            return db.Products.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }
     }
 }

@@ -24,9 +24,9 @@ namespace WatchShop.Controllers.admin
             trademarkDAO = new TrademarkDAO();
         }
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var model = productDAO.getAll();
+            var model = productDAO.ListAllPaging(page,pageSize);
             ViewBag.promotion = promotionDAO.getNewPromotions();
             ViewBag.trademark = trademarkDAO.getAll();
             if(Session[CommonConstant.USER_SESSION] == null)
@@ -65,6 +65,13 @@ namespace WatchShop.Controllers.admin
         public ActionResult CategoryManager()
         {
             var model = categoryDAO.getAll();
+            return View(model);
+        }
+
+        public ActionResult TrademarkManager(int page = 1,int pageSize = 5)
+        {
+            var model = trademarkDAO.ListAllPaging(page, pageSize);
+
             return View(model);
         }
     }
