@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Mvc;
 using Model.EF;
 using WatchShop.Common;
+using Model.ViewModel;
+using System.IO;
 
 namespace WatchShop.Controllers.admin
 {
@@ -68,11 +70,17 @@ namespace WatchShop.Controllers.admin
             return View(model);
         }
 
-        public ActionResult TrademarkManager(int page = 1,int pageSize = 5)
+        public string SaveFile(ProductModel model)
         {
-            var model = trademarkDAO.ListAllPaging(page, pageSize);
-
-            return View(model);
+            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+            string extension = Path.GetExtension(model.ImageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            fileName = Path.Combine(Server.MapPath("/Assets/Client/images/"), fileName);
+            model.ImageFile.SaveAs(fileName);
+            return fileName;
         }
+
+
+
     }
 }

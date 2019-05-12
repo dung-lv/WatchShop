@@ -82,6 +82,7 @@
     <Compile Include="EF\WatchShopDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CategoryTrademarkViewModel.cs" />
+    <Compile Include="ViewModel\ProductModel.cs" />
     <Compile Include="ViewModel\PromotionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

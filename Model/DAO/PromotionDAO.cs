@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Model.EF;
 using Model.ViewModel;
 using System;
+using PagedList;
 
 namespace Model.DAO
 {
@@ -54,5 +55,28 @@ namespace Model.DAO
                 return model.ToList();
             }    
         }
+
+        public IEnumerable<Promotion> ListAllPaging(int page = 1, int pageSize = 4)
+        {
+            return db.Promotions.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+        }
+
+        public bool Insert(Promotion promotion)
+        {
+            try
+            {
+                db.Promotions.Add(promotion);
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+            
+            
+        }
+        
     }
 }

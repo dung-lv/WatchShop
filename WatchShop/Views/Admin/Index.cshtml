@@ -31,11 +31,14 @@
         {
             <tr>
                 <td class="name-product">@item.Name</td>
-                <td class="avatar-product"><img src="/Assets/Client/images/@item.Avatar" width="100" /></td>
+                <td class="avatar-product" name="@item.Avatar"><img src="/Assets/Client/images/@item.Avatar" width="100" /></td>
                 <td class="quantity-product">@item.Quantity</td>
                 <td class="price-product">@item.Price</td>
                 <td class="trademark-product">@item.Trademark.Name</td>
                 <td class="id-product" style="display:none">@item.ID_Product</td>
+                <td class="metatitle-product" style="display:none">@item.Metatitle</td>
+                <td class="description-product" style="display:none">@item.Description</td>
+                <td class="content-product" style="display:none">@item.Content</td>
                 <td>
                     <button class="btn btn-info btn-update-product" data-toggle="modal" data-target="#productModal">Sửa</button>
                     <button class="btn btn-warning btn-delete-product" data-id="@item.ID_Product">Xoá</button>
@@ -45,9 +48,7 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
-
-@using (Html.BeginForm("CreateOrProduct", "Admin", FormMethod.Post))
+@using (Html.BeginForm("CreateOrUpdateProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="modal fade" id="productModal" role="dialog">
         <div class="modal-dialog">
@@ -62,13 +63,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="name">Tên sản phẩm:</label>
-                                    <input id="modal-name-product" type="text" class="form-control" placeholder="Enter answer" name="name"><br />
+                                    <input id="modal-name-product" type="text" class="form-control" placeholder="Enter answer" name="name" required><br />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="price">Giá bán:</label>
-                                    <input id="modal-price-product" type="number" class="form-control" placeholder="Enter answer" name="price"><br />
+                                    <input id="modal-price-product" type="number" class="form-control" placeholder="Enter answer" name="price" required><br />
                                 </div>
                             </div>
                         </div>
@@ -77,13 +78,13 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="quantity">Số lượng:</label>
-                                    <input id="modal-quantity-product" type="number" class="form-control" placeholder="Enter answer" name="quantity"><br />
+                                    <input id="modal-quantity-product" type="number" class="form-control" placeholder="Enter answer" name="quantity" required><br />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="avatar">Avatar:</label>
-                                    <input type="file" class="form-control" placeholder="Enter answer" name="avatar"><br />
+                                    <input type="file" class="form-control" placeholder="Enter answer" name="ImageFile"><br />
                                 </div>
                             </div>
                         </div>
@@ -92,10 +93,10 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="promotion">Khuyến mãi:</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="ID_Promotion">
                                         @foreach (var item in promotion)
                                         {
-                                            <option value="@item.ID_Promotion" name="promotion">@item.Name</option>
+                                            <option value="@item.ID_Promotion">@item.Name</option>
                                         }
                                     </select>
                                 </div>
@@ -112,27 +113,35 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="metatitle">Tên đường dẫn:</label>
-                                    <input type="text" class="form-control" id="metatitle" placeholder="Enter answer" name="metatitle"><br />
+                                    <input type="text" class="form-control" id="metatitle" placeholder="Enter answer" name="metatitle" required><br />
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label for="trademark">Thương hiệu:</label>
-                                    <select class="form-control" id="modal-trademark-product">
-                                        @foreach (var item in trademark)
-                                        {
-                                            <option value="@item.ID_Trademark" name="trademark">@item.Name</option>
-                                        }
-                                    </select>
+                                    <label class="checkbox-inline">Sản phẩm Hot: <input type="checkbox" value="true" name="hot"></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="modal-id-product" name="id" style="display:none;" />
+                            <label for="trademark">Thương hiệu:</label>
+                            <select class="form-control" id="modal-trademark-product" name="ID_Trademark">
+                                @foreach (var item in trademark)
+                                {
+                                    <option value="@item.ID_Trademark">@item.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="modal-id-product" name="ID_Product" style="display:none;" />
                         </div>
                         <div class="form-group">
                             <label for="description">Mô tả:</label>
-                            <textarea class="form-control" rows="5" name="description"></textarea>
+                            <textarea class="form-control" rows="5" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Nội dung chi tiết:</label>
+                            <textarea class="form-control" rows="7" name="content" required></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -151,4 +160,6 @@
     </div>
 }
 
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
 
