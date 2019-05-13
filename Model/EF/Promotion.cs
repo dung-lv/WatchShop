@@ -18,13 +18,11 @@ namespace Model.EF
         [Key]
         public long ID_Promotion { get; set; }
 
-        [Required]
         [StringLength(200)]
         public string Name { get; set; }
 
-        [Required]
         public DateTime? StartTime { get; set; }
-        [Required]
+
         public DateTime? EndTime { get; set; }
 
         [Column(TypeName = "ntext")]

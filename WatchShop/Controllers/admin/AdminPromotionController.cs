@@ -42,7 +42,13 @@ namespace WatchShop.Controllers.admin
 
             }
 
-            return Redirect("/");
+            return Redirect("/Admin/Index");
         }
+        //[HttpPost]
+        //public JsonResult AjaxMethod(PersonModel person)
+        //{
+        //    person.DateTime = DateTime.Now.ToString();
+        //    return Json(person);
+        //}
     }
 }

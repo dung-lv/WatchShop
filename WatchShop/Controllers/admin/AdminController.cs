@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.ViewModel;
 using Model.EF;
 using WatchShop.Common;
-using Model.ViewModel;
 using System.IO;
 
 namespace WatchShop.Controllers.admin
@@ -28,8 +28,10 @@ namespace WatchShop.Controllers.admin
         // GET: Admin
         public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            var model = productDAO.ListAllPaging(page,pageSize);
-            ViewBag.promotion = promotionDAO.getNewPromotions();
+            var model = productDAO.ListAllPaging(page, pageSize);
+            List<Promotion> promotions = promotionDAO.getNewPromotions();
+            promotions.Insert(0, new Promotion());
+            ViewBag.promotion = promotions;
             ViewBag.trademark = trademarkDAO.getAll();
             if(Session[CommonConstant.USER_SESSION] == null)
             {
@@ -39,20 +41,38 @@ namespace WatchShop.Controllers.admin
         }
 
         [HttpPost]
-        public ActionResult CreateOrProduct(string name, string price, string quantity, string avatar, string promotion, string discount, string metatitle, string trademark, string description)
+        public ActionResult CreateOrUpdateProduct(ProductModel model)
         {
-            Product db = new Product();
-            db.Name = name;
-            db.Price = Decimal.Parse(price);
-            db.Quantity = Int32.Parse(quantity);
-            db.Avatar = avatar;
-            //Promotion pro = promotionDAO.getPromotionById(Int32.Parse(promotion));
-            db.Discount = Decimal.Parse(discount);
-            db.Metatitle = metatitle;
-            //Trademark tra = trademarkDAO.getDetailTrademark(Int32.Parse(trademark));
-            db.Description = description;
-            productDAO.InsertProduct(db);
-            return Redirect("/");
+            if (model.ID_Product != 0)
+            {
+                if(model.ImageFile != null)
+                {
+                    model.Avatar = SaveFile(model);
+                }
+                productDAO.UpdateProduct(model);
+            }
+            else
+            {
+                Product db = new Product();
+                db.Name = model.Name;
+                db.Price = model.Price;
+                db.Quantity = model.Quantity;
+                if (model.ID_Promotion != 0)
+                {
+                    db.ID_Promotion = model.ID_Promotion;
+                    db.Discount = model.Discount;
+                }
+                db.Hot = model.Hot;
+                db.Metatitle = model.Metatitle;
+                db.Description = model.Description;
+                db.Content = model.Content;
+                db.ID_Trademark = model.ID_Trademark;
+                db.Avatar = SaveFile(model);
+                db.CreateDate = DateTime.Now;
+                productDAO.InsertProduct(db);
+            }
+            ModelState.Clear();
+            return Redirect("/Admin/Index");
         }
 
         public JsonResult Delete(long id)
@@ -79,8 +99,5 @@ namespace WatchShop.Controllers.admin
             model.ImageFile.SaveAs(fileName);
             return fileName;
         }
-
-
-
     }
 }

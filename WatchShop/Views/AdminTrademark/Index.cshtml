@@ -37,7 +37,7 @@
 
 
 </table>
-@Html.PagedListPager(Model, page => Url.Action("TrademarkManager", new { page, @searchString = @ViewBag.SearchString }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
 @using (Html.BeginForm("CreateOrProduct", "Admin", FormMethod.Post))
 {
     <div class="modal fade" id="TrademarkModal" role="dialog">

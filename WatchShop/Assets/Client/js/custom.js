@@ -71,34 +71,6 @@
     //    }
     //});
 
-    $('.btn-update-product').click(function () {
-        alert("jahsjahjah");
-        var name = $(this).closest('tr').find('.name-product').text();
-        var quantity = $(this).closest('tr').find('.quantity-product').text();
-        var price = $(this).closest('tr').find('.price-product').text();
-        var trademark = $(this).closest('tr').find('.trademark-product').text();
-        var id = $(this).closest('tr').find('.id-product').text();
-        $('.form-product').find('#modal-name-product').val(name);
-        $('.form-product').find('#modal-quantity-product').val(quantity);
-        $('.form-product').find('#modal-trademark-product select').val(trademark);
-        $('.form-product').find('#modal-price-product').val(price);
-        $('.form-product').find('#modal-id-product').val(id);
-    });
-    $('.btn-delete-product').click(function (e) {
-        e.preventDefault();
-        $.ajax({
-            data: { id: $(this).data('id') },
-            url: '/Admin/Delete',
-            dataType: 'json',
-            type: 'POST',
-            success: function (res) {
-                if (res.status == true) {
-                    window.location.href = "/";
-                }
-            }
-        })
-    });
-
     $('#btnSend').click(function () {
         var name = $('#txtName').val();
         var phone = $('#txtPhone').val();

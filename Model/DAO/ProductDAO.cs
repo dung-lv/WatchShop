@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.EF;
+using Model.ViewModel;
+using System.IO;
 using PagedList;
 
 namespace Model.DAO
@@ -91,6 +93,29 @@ namespace Model.DAO
         {
             Product pro = db.Products.Find(id);
             db.Products.Remove(pro);
+            db.SaveChanges();
+        }
+
+        public void UpdateProduct(ProductModel pro)
+        {
+            var entity = db.Products.Find(pro.ID_Product);
+            entity.Name = pro.Name;
+            entity.Price = pro.Price;
+            entity.Quantity = pro.Quantity;
+            entity.Hot = pro.Hot;
+            entity.Metatitle = pro.Metatitle;
+            entity.Description = pro.Description;
+            entity.Content = pro.Content;
+            entity.ID_Trademark = pro.ID_Trademark;
+            if (pro.ID_Promotion != 0)
+            {
+                entity.ID_Promotion = pro.ID_Promotion;
+                entity.Discount = pro.Discount;
+            }
+            if (pro.Avatar != null)
+            {
+                entity.Avatar = pro.Avatar;
+            }
             db.SaveChanges();
         }
 

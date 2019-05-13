@@ -25,8 +25,7 @@ namespace Model.DAO
         {
             return db.Trademarks.SingleOrDefault(x => x.ID_Trademark == id);
         }
-
-        public IEnumerable<Trademark> ListAllPaging(int page = 1,int pageSize = 4)
+        public IEnumerable<Trademark> ListAllPaging(int page = 1, int pageSize = 4)
         {
             return db.Trademarks.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
         }

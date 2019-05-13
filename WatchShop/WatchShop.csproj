@@ -257,6 +257,7 @@
     <Content Include="Assets\Admin\js-login\metisMenu.js" />
     <Content Include="Assets\Admin\js-login\metisMenu.min.js" />
     <Content Include="Assets\Admin\js-login\sb-admin-2.js" />
+    <Content Include="Assets\Admin\js\custom.js" />
     <Content Include="Assets\Admin\js\main.js" />
     <Content Include="Assets\Admin\vendor\animsition\animsition.min.css" />
     <Content Include="Assets\Admin\vendor\animsition\animsition.min.js" />
