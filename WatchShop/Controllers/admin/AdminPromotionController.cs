@@ -44,11 +44,13 @@ namespace WatchShop.Controllers.admin
 
             return Redirect("/Admin/Index");
         }
-        //[HttpPost]
-        //public JsonResult AjaxMethod(PersonModel person)
-        //{
-        //    person.DateTime = DateTime.Now.ToString();
-        //    return Json(person);
-        //}
+        public JsonResult Delete(long id)
+        {
+            promotionDAO.DeletePromotion(id);
+            return Json(new
+            {
+                status = true
+            });
+        }
     }
 }

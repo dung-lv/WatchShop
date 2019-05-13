@@ -229,6 +229,7 @@
     <Content Include="Assets\Admin\css-login\metisMenu.css" />
     <Content Include="Assets\Admin\css-login\metisMenu.min.css" />
     <Content Include="Assets\Admin\css-login\sb-admin-2.css" />
+    <Content Include="Assets\Admin\css\bootstrap-3.3.7.min.css" />
     <Content Include="Assets\Admin\css\font-face.css" />
     <Content Include="Assets\Admin\css\theme.css" />
     <Content Include="Assets\Admin\fonts\poppins\poppins-v5-latin-100.svg" />
@@ -257,6 +258,7 @@
     <Content Include="Assets\Admin\js-login\metisMenu.js" />
     <Content Include="Assets\Admin\js-login\metisMenu.min.js" />
     <Content Include="Assets\Admin\js-login\sb-admin-2.js" />
+    <Content Include="Assets\Admin\js\bootstrap-datepicker-1.8.0.js" />
     <Content Include="Assets\Admin\js\custom.js" />
     <Content Include="Assets\Admin\js\main.js" />
     <Content Include="Assets\Admin\vendor\animsition\animsition.min.css" />

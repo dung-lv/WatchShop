@@ -73,9 +73,12 @@ namespace Model.DAO
             {
                 return false;
             }
-
-
-
+        }
+        public void DeletePromotion(long id)
+        {
+            Promotion pro = db.Promotions.Find(id);
+            db.Promotions.Remove(pro);
+            db.SaveChanges();
         }
     }
 }

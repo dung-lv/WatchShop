@@ -27,14 +27,14 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td class="name-category">@item.Name</td>
+                <td class="name-promotion">@item.Name</td>
 
-                <td class="name-category"> @DateTime.Parse(item.StartTime.ToString()).ToString("dd/MM/yyyy")</td>
-                <td class="name-category"> @DateTime.Parse(item.EndTime.ToString()).ToString("dd/MM/yyyy")</td>
-                <td class="name-category">@item.Description</td>
+                <td class="startTime-promotion"> @DateTime.Parse(item.StartTime.ToString()).ToString("dd/MM/yyyy")</td>
+                <td class="endTime-promotion"> @DateTime.Parse(item.EndTime.ToString()).ToString("dd/MM/yyyy")</td>
+                <td class="description-promotion">@item.Description</td>
                 <td>
-                    <button class="btn btn-info btn-update-category" data-toggle="modal" data-target="#PromotionModal">Sửa</button>
-                    <button class="btn btn-warning btn-delete-category" data-id="@item.ID_Promotion">Xoá</button>
+                    <button class="btn btn-info btn-update-promotion" data-toggle="modal" data-target="#PromotionModal">Sửa</button>
+                    <button class="btn btn-warning btn-delete-promotion" data-id="@item.ID_Promotion">Xoá</button>
                 </td>
             </tr>
         }
@@ -48,7 +48,7 @@
 {
     <div class="modal fade" id="PromotionModal" role="dialog">
         <div class="modal-dialog">
-            <form id="form-product" action="" method="post">
+            <form id="form-promotion" action="" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">THÔNG TIN KHUYẾN MẠI</h5>
@@ -57,13 +57,38 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="name">Tên khuyến mại :</label>
-                            <input id="modal-name-product" type="text" class="form-control" placeholder="Enter answer" name="Name"><br />
+                            <input id="modal-name-promotion" type="text" class="form-control" placeholder="Enter answer" name="Name"><br />
                         </div>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="name">Mô Tả</label>
-                            <input id="modal-name-product" type="text" class="form-control" placeholder="Enter answer" name="Description"><br />
+                            <label for="startTime-promotion">Ngày bắt đầu  :</label>
+                            <div class="input-group date" data-date-format="dd/mm/yyyy">
+                                <input id="start-date" name="StartTime" type="text" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <label for="input-date-dob" class="glyphicon glyphicon-th" id="date-dob"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="endTime-promotion" >Ngày kết thúc :</label>
+                            <div class="input-group date" data-date-format="dd/mm/yyyy">
+                                <input id="end-date" name="EndTime" type="text" class="form-control" required>
+                                <div class="input-group-addon">
+                                    <label for="input-date-dob" class="glyphicon glyphicon-th" id="date-dob"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Mô Tả</label> <br>
+                            <textarea rows="4" cols="50" name="Description" style="border:solid 1px orange;">
+                            </textarea>
+                            <br>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -81,7 +106,4 @@
         </div>
     </div>
 }
-
-
-
 

@@ -67,4 +67,44 @@
         $('#txtEmail').val('');
         $('#txtContent').val('');
     }
+
+    $('.btn-update-promotion').click(function () {
+        var name = $(this).closest('tr').find('.name-promotion').text();
+        var startTime = $(this).closest('tr').find('.startTime-promotion').text();
+        var endTiem = $(this).closest('tr').find('.endTime-promotion').text();
+        var description = $(this).closest('tr').find('.description-promotion').text();
+
+
+        $("input[name=Name]").val(name);
+        $("input[name=StartTime]").val(startTime);
+        $("input[name=EndTime]").val(endTiem);
+        $("textarea[name=Description]").val(description);
+
+    });
+
+    $('.btn-delete-promotion').click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            data: { id: $(this).data('id') },
+            url: '/AdminPromotion/Delete',
+            dataType: 'json',
+            type: 'POST',
+            success: function (res) {
+                if (res.status == true) {
+                    window.location.href = "/Admin/Index";
+                }
+            }
+        })
+    });
+
+    
+        $('#input-date-dob').datepicker({ format: "dd/mm/yyyy" });
+        $('#end-date').click(function () {
+            $('#input-date-dob').datepicker({ format: "dd/mm/yyyy" });
+        });
+        $('#start-date').datepicker({ format: "dd/mm/yyyy" });
+        
+   
+
+
 });
