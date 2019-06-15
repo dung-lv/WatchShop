@@ -205,8 +205,10 @@
     <Compile Include="Common\ValConst.cs" />
     <Compile Include="Common\ValSession.cs" />
     <Compile Include="Controllers\admin\AdminController.cs" />
+    <Compile Include="Controllers\admin\AdminOrderController.cs" />
     <Compile Include="Controllers\admin\AdminPromotionController.cs" />
     <Compile Include="Controllers\admin\AdminTrademarkController.cs" />
+    <Compile Include="Controllers\admin\BaseController.cs" />
     <Compile Include="Controllers\admin\LoginController.cs" />
     <Compile Include="Controllers\Client\CartController.cs" />
     <Compile Include="Controllers\Client\FeedbackController.cs" />
@@ -636,6 +638,7 @@
     <Content Include="Views\Admin\CategoryManager.cshtml" />
     <Content Include="Views\AdminPromotion\Index.cshtml" />
     <Content Include="Views\AdminTrademark\Index.cshtml" />
+    <Content Include="Views\AdminOrder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

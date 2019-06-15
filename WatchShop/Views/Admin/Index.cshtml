@@ -1,6 +1,5 @@
-﻿
-@model  PagedList.IPagedList<Model.EF.Product>
-@using PagedList.Mvc
+﻿@model PagedList.IPagedList<Model.EF.Product>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Quản lý sản phẩm";
     Layout = "~/Views/Shared/_Layout_Admin.cshtml";
@@ -42,8 +41,6 @@
 
     </tbody>
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
-
 @using (Html.BeginForm("CreateOrUpdateProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="modal fade" id="productModal" role="dialog">
@@ -80,7 +77,8 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <label for="avatar">Avatar:</label>
-                                    <input type="file" class="form-control" placeholder="Enter answer" name="ImageFile"><br />
+                                    <input type="file" class="form-control" placeholder="Enter answer" name="ImageFile" id="avatar"><br />
+                                    <img src="" id="profile-img-tag" style="width:140px; height: 100px;" />
                                 </div>
                             </div>
                         </div>

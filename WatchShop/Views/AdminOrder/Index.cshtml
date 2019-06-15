@@ -1,0 +1,127 @@
+﻿@model  PagedList.IPagedList<Model.EF.OrderDetail>
+@using PagedList.Mvc
+@{ ViewBag.Title = "Quản lý Order";
+    Layout = "~/Views/Shared/_Layout_Admin.cshtml";
+}
+<style>
+    li {
+        margin: 5px;
+        padding: 5px;
+    }
+</style>
+<h2 class="title-1" style="text-align: center;">Danh sách Order</h2>
+<table class="table table-bordered" style="background-color:white">
+    <thead>
+        <tr>
+            <td>Tên người nhận</td>
+            <td>Địa chỉ</td>
+            <td>Tên sản phẩm</td>
+            <td>Đơn giá</td>
+            <td>Số lượng</td>
+            <td>Trạng Thái</td>
+            <td>Thao tác</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            var status = "";
+                if (item.Order.Status == "CF")
+                {
+                    status = "disabled";
+                }
+            
+        <tr>
+            <td class="name-order">@item.Order.Name</td>
+            <td class="address-order">@item.Order.Address</td>
+            <td class="name-product">@item.Product.Name</td>
+            <td class="price-product">@item.Product.Price</td>
+            <td class="quantity-order-detail">@item.Quantity</td>
+            @if( item.Order.Status == "CF") {
+            <td class="status-order-detail">Đã Xác Nhận</td>
+            }else {
+            <td class="status-order-detail">Đợi Xác Nhận</td>
+            }
+
+            <td>
+                <button @status class="btn btn-info btn-update-order" data-toggle="modal" data-id="@item.ID_Order" data-target="#OrderModal">Sửa</button>
+            </td>
+        </tr>
+        }
+
+    </tbody>
+
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+@using (Html.BeginForm("update", "AdminOrder", FormMethod.Post))
+{
+    <div class="modal fade" id="OrderModal" role="dialog">
+        <div class="modal-dialog">
+            <form id="form-product" action="" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">THÔNG TIN ORDER</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Tên người nhận :</label>
+                            <input id="modal-name-product" type="text" class="form-control" placeholder="Enter answer" name="name-order" disabled>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Địa chỉ người nhận</label>
+                            <input id="modal-address-order" type="text" disabled class="form-control" placeholder="Enter answer" name="address-order">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Tên sản phẩm</label>
+                            <input id="modal-name-product" type="text" disabled class="form-control" placeholder="Enter answer" name="name-product">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Giá sản phẩm</label>
+                            <input id="modal-name-product" type="text" disabled class="form-control" placeholder="Enter answer" name="price-product">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Số lượng</label>
+                            <input id="modal-name-product" type="text" disabled class="form-control" placeholder="Enter answer" name="quantity-order-detail">
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="status">Trạng Thái</label>
+                            <select id="status" name="status">
+                                <option value="W">Đang đợi</option>
+                                <option value="CF">Đã xác nhận</option>
+                                
+                            </select>
+ 
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-sm btn-purple btn-update-status-order">
+                            <i class="ace-icon fa fa-floppy-o bigger-125"></i>
+                            <span class="bigger-110">Lưu</span>
+                        </button>
+                        <button id="btn-reset" type="reset" class="width-35 pull-right btn btn-sm">
+                            <i class="ace-icon fa fa-refresh"></i>
+                            <span class="bigger-110">Reset</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+
+
+

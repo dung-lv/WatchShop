@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace WatchShop.Controllers.admin
 {
-    public class AdminTrademarkController : Controller
+    public class AdminTrademarkController : BaseController
     {
         private ProductDAO productDAO = null;
         private CategoryDAO categoryDAO = null;

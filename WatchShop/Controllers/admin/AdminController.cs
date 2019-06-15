@@ -8,10 +8,11 @@ using Model.ViewModel;
 using Model.EF;
 using WatchShop.Common;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace WatchShop.Controllers.admin
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private ProductDAO productDAO = null;
         private CategoryDAO categoryDAO = null;
@@ -33,13 +34,9 @@ namespace WatchShop.Controllers.admin
             promotions.Insert(0, new Promotion());
             ViewBag.promotion = promotions;
             ViewBag.trademark = trademarkDAO.getAll();
-            if(Session[CommonConstant.USER_SESSION] == null)
-            {
-                return Redirect("/");
-            }
             return View(model);
         }
-
+      
         [HttpPost]
         public ActionResult CreateOrUpdateProduct(ProductModel model)
         {
@@ -95,9 +92,10 @@ namespace WatchShop.Controllers.admin
             string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
             string extension = Path.GetExtension(model.ImageFile.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            string avatar = fileName;
             fileName = Path.Combine(Server.MapPath("/Assets/Client/images/"), fileName);
             model.ImageFile.SaveAs(fileName);
-            return fileName;
+            return avatar;
         }
     }
 }

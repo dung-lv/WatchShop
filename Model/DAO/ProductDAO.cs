@@ -73,7 +73,7 @@ namespace Model.DAO
         }
 
         public Product getDetailProductById(long productID)
-        {
+        {       
             return db.Products.SingleOrDefault(x => x.ID_Product == productID);
         }
 

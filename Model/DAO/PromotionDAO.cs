@@ -74,11 +74,17 @@ namespace Model.DAO
                 return false;
             }
         }
-        public void DeletePromotion(long id)
+        public Boolean DeletePromotion(long id)
         {
+            var model = getPromotionProduct(id,2);
+            if (model.Count != 0)
+            {
+                return false;
+            }
             Promotion pro = db.Promotions.Find(id);
             db.Promotions.Remove(pro);
             db.SaveChanges();
+            return true;
         }
     }
 }

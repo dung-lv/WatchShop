@@ -7,7 +7,7 @@ using Model.EF;
 using Model.DAO;
 namespace WatchShop.Controllers.admin
 {
-    public class AdminPromotionController : Controller
+    public class AdminPromotionController : BaseController
     {
         private ProductDAO productDAO = null;
         private CategoryDAO categoryDAO = null;
@@ -46,10 +46,16 @@ namespace WatchShop.Controllers.admin
         }
         public JsonResult Delete(long id)
         {
-            promotionDAO.DeletePromotion(id);
-            return Json(new
+           if( promotionDAO.DeletePromotion(id))
             {
-                status = true
+                return Json(new
+                {
+                    status = true
+                });
+            }
+            return   Json(new
+            {
+                status = false
             });
         }
     }
