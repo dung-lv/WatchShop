@@ -15,15 +15,8 @@ namespace WatchShop
 
             routes.MapRoute(
                 name: "Product by Category",
-                url: "danhmuc/{category}",
-                defaults: new { controller = "Product", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "WatchShop.Controllers" }
-            );
-
-            routes.MapRoute(
-                name: "Product by Trademark",
-                url: "thuonghieu/{trademark}",
-                defaults: new { controller = "Product", action = "ProductByTrademark", id = UrlParameter.Optional },
+                url: "danhmuc",
+                defaults: new { controller = "Product", action = "Index", name = UrlParameter.Optional },
                 namespaces: new[] { "WatchShop.Controllers" }
             );
 
@@ -49,16 +42,23 @@ namespace WatchShop
             );
 
             routes.MapRoute(
+                name: "Infor",
+                url: "thongtindonhang",
+                defaults: new { controller = "Cart", action = "Infor" },
+                namespaces: new[] { "WatchShop.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Detail Product",
-                url: "chitietsanpham/{product}",
-                defaults: new { controller = "Product", action = "DetailProductById", id = UrlParameter.Optional },
+                url: "chitietsanpham",
+                defaults: new { controller = "Product", action = "ProductDetailByMetaTitle", name = UrlParameter.Optional },
                 namespaces: new[] { "WatchShop.Controllers" }
             );
 
             routes.MapRoute(
                 name: "Search Product",
                 url: "timkiem",
-                defaults: new { controller = "Product", action = "DetailProductByName", id = UrlParameter.Optional },
+                defaults: new { controller = "Product", action = "ProductDetailByName", id = UrlParameter.Optional },
                 namespaces: new[] { "WatchShop.Controllers" }
             );
 
@@ -71,7 +71,7 @@ namespace WatchShop
             );
 
             routes.MapRoute(
-                name: "Contact",
+                name: "Feedback",
                 url: "lienhe",
                 defaults: new { controller = "Feedback", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "WatchShop.Controllers" }

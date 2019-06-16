@@ -59,7 +59,7 @@ namespace WatchShop.Controllers.admin
                     db.ID_Promotion = model.ID_Promotion;
                     db.Discount = model.Discount;
                 }
-                db.Hot = model.Hot;
+                //db.Hot = model.Hot;
                 db.Metatitle = model.Metatitle;
                 db.Description = model.Description;
                 db.Content = model.Content;

@@ -5,7 +5,6 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Web;
 
     [Table("Product")]
     public partial class Product
@@ -35,7 +34,8 @@ namespace Model.EF
 
         public int? Quantity { get; set; }
 
-        public bool? Hot { get; set; }
+        [StringLength(50)]
+        public string Color { get; set; }
 
         public decimal? Discount { get; set; }
 

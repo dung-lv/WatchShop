@@ -40,3 +40,17 @@ C:\Users\anh\Desktop\WatchShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.ca
 C:\Users\anh\Desktop\WatchShop\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\anh\Desktop\WatchShop\Model\obj\Debug\Model.dll
 C:\Users\anh\Desktop\WatchShop\Model\obj\Debug\Model.pdb
+D:\CNWeb\WatchShop\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\CNWeb\WatchShop\Model\obj\Debug\Model.dll
+D:\CNWeb\WatchShop\Model\obj\Debug\Model.pdb
+D:\CNWeb\WatchShop\Model\bin\Debug\Model.dll.config
+D:\CNWeb\WatchShop\Model\bin\Debug\Model.dll
+D:\CNWeb\WatchShop\Model\bin\Debug\Model.pdb
+D:\CNWeb\WatchShop\Model\bin\Debug\EntityFramework.dll
+D:\CNWeb\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\CNWeb\WatchShop\Model\bin\Debug\PagedList.dll
+D:\CNWeb\WatchShop\Model\bin\Debug\PagedList.Mvc.dll
+D:\CNWeb\WatchShop\Model\bin\Debug\EntityFramework.xml
+D:\CNWeb\WatchShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\CNWeb\WatchShop\Model\bin\Debug\PagedList.xml
+D:\CNWeb\WatchShop\Model\bin\Debug\PagedList.Mvc.xml

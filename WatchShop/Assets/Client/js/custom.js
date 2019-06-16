@@ -1,5 +1,29 @@
 ﻿$(document).ready(function () {
 
+    function formatNumber(nStr, decSeperate, groupSeperate) {
+        nStr += '';
+        x = nStr.split(decSeperate);
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + groupSeperate + '$2');
+        }
+        return x1 + x2;
+    }
+
+    $('.cls_quantity').keyup(function () {
+        var quantity = $(this).val();
+        var price = $(this).closest('tr').find('.price').text().replace(/\D/g, '').replace(' đ', '').trim();
+        var total = parseInt(quantity) * parseInt(price);
+        $(this).closest('tr').find('.total').text(formatNumber(total, '.', ',') + " đ");
+        var totalAll = 0;
+        $('.table-cart tbody tr').each(function () {
+            totalAll += parseInt($(this).find('.total').text().replace(/\D/g, '').replace(' đ', '').trim());
+        })
+        $('#btnViewTotal').text(formatNumber(totalAll, '.', ',') + " đ");
+    });
+
     $('#btnUpdate').click(function () {
         var listQuantity = $('.cls_quantity');
         var cartList = [];
@@ -19,7 +43,6 @@
             type: 'POST',
             success: function (res) {
                 if (res.status == true) {
-                    alert("Cập nhật giỏ hàng thành công !!!");
                     window.location.href = "/giohang";
                 }
             }
@@ -41,57 +64,35 @@
         })
     });
 
-    //$('.numberPage').click(function () {
-    //    var numberPage = $(this).text();
-    //    var category = $('#category-product').text();
-    //    var trademark = $('#trademark-product').text();
-    //    var categoryID = $('#category-product').data('id');
-    //    var trademarkID = $('#trademark-product').data('id');
-    //    if (trademarkID == null) {
-    //        $.ajax({
-    //            data: { id: categoryID, numberPage: numberPage },
-    //            url: '/danhmuc/' + category + '/' + categoryID,
-    //            dataType: 'json',
-    //            type: 'POST',
-    //            success: function () {
-                    
-    //            }
-    //        })
-    //    }
-    //    else {
-    //        $.ajax({
-    //            data: { id: trademarkID, numberPage: numberPage },
-    //            url: '/danhmuc/' + category + '/' + trademark + '/' + trademarkID,
-    //            dataType: 'json',
-    //            type: 'POST',
-    //            success: function () {
-                    
-    //            }
-    //        })
+    //$("#txtEmail").on('invalid', function (e) {
+    //    if (e.target.validity.typeMismatch) {
+    //        e.target.setCustomValidity("Email không đúng định dạng");
     //    }
     //});
 
     $('#btnSend').click(function () {
-        var name = $('#txtName').val();
-        var phone = $('#txtPhone').val();
-        var address = $('#txtAddress').val();
         var email = $('#txtEmail').val();
         var content = $('#txtContent').val();
+        if (email == '' || content == '') {
+            return;
+        }
+
+        var reg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+        if (!reg.test(email)) {
+            return;
+        }
 
         $.ajax({
-            url: '/Contact/Send',
+            url: '/Feedback/Send',
             type: 'POST',
             dataType: 'json',
             data: {
-                name: name,
-                mobile: mobile,
-                address: address,
                 email: email,
                 content: content
             },
             success: function (res) {
                 if (res.status == true) {
-                    window.alert('Gửi thành công');
+                    window.location.href = "/lienhe";
                     resetForm();
                 }
             }
@@ -99,10 +100,8 @@
     });
 
     function resetForm() {
-        $('#txtName').val('');
-        $('#txtPhone').val('');
-        $('#txtAddress').val('');
         $('#txtEmail').val('');
         $('#txtContent').val('');
     }
+
 });

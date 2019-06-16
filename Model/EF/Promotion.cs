@@ -25,9 +25,6 @@ namespace Model.EF
 
         public DateTime? EndTime { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string Description { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }

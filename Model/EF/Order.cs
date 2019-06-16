@@ -31,9 +31,6 @@ namespace Model.EF
 
         public DateTime? CreateDate { get; set; }
 
-        [StringLength(100)]
-        public string Transport { get; set; }
-
         [Column(TypeName = "ntext")]
         public string Note { get; set; }
 

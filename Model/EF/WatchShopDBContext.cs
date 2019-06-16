@@ -52,10 +52,6 @@ namespace Model.EF
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Feedback>()
-                .Property(e => e.Phone)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Login>()
                 .Property(e => e.Username)
                 .IsUnicode(false);

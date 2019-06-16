@@ -1,97 +1,87 @@
 ﻿@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+    Layout = "~/Views/Shared/_Layout_client.cshtml";
     var listHotProduct = (List<Model.EF.Product>)ViewBag.listHotProduct;
-    var listPromotionProduct = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProduct;
     var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
 }
-<section class="xt-slider">
-    <div class="row">
-        <div class="col-md-3 category-hidden"></div>
-        <div class="col-md-9 col-md-offset-3 padding-o padding-sm">
-            <div class="flexslider xt-slider-inner">
-                <ul class="slides">
-                    @foreach (var item in listPromotionProductTop)
-                    {
-                        <li style="height:494px;">
-                            <img src="/Assets/Client/images/@item.Avatar" alt="" />
-                            <div class="slide_text">
-                                <span class="slide-category">@item.NamePromotion</span>
-                                <h2 class="slide_title">@item.NameProduct</h2>
-                                <p class="slide_byline ">
-                                    @item.Description
-                                </p>
-                                <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Mua ngay</a>
-                            </div>
-                        </li>
-                    }
-                </ul>
-            </div>
+
+@{ Html.RenderAction("Slide", "Home");}
+
+<section class="bg0 p-t-23">
+    <div class="container">
+        <div class="p-b-10" style="margin-bottom: 20px; text-align: center;">
+            <h3 class="ltext-103 cl5">
+                SẢN PHẨM KHUYẾN MÃI
+            </h3>
         </div>
-    </div>
-</section>
-<section class="xt-feature-product">
-    <div class="row section-separator">
-        <div class="section-title">
-            <h2>SẢN PHẨM ĐANG KHUYỄN MÃI</h2>
-            <span class="xt-title-bg"></span>
-        </div>
-        <div class="xt-each-feature">
-        @foreach (var item in listPromotionProduct)
-        {
-            <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
-                <div class="xt-feature">
-                    <div class="product-img">
-                        <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                        <span class="product-tag xt-uppercase">sale!</span>
-                        <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.NameProduct</span></a></div>
-                    <div class="product-info">
-                        <div class="product-title">
-                            <span class="category xt-uppercase">Giá gốc</span>
-                            <span class="name xt-semibold">Sale</span>
+        <div class="row isotope-grid">
+            @foreach (var item in listPromotionProductTop)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <div class="block2" style="background-color: antiquewhite;">
+                        <div class="block2-pic hov-img0">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="IMG-PRODUCT" style="max-height: 270px;">
+                            <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Thêm giỏ hàng
+                            </a>
                         </div>
-                        <div class="price-tag pull-right">
-                            <span class="old-price"><del>@item.Price</del></span>
-                            <span class="new-price xt-semibold">@item.Discount</span>
-                        </div>
-                        <div class="xt-featured-caption">
-                            <div class="add-cart">
-                                <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm giỏ hàng</a>
+                        <div class="block2-txt flex-w flex-t p-t-14" style="text-align:-webkit-center;">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/chitietsanpham?name=@item.Metatitle" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="font-size: 16px;">
+                                    @item.NameProduct
+                                </a>
+                                <span class="stext-105 cl3" style="font-size: 16px;">
+                                    <strike>@item.Price.GetValueOrDefault(0).ToString("N0") đ</strike>
+                                </span>
+                                <span class="stext-105 cl3" style="font-size: 16px;">
+                                    @item.Discount.GetValueOrDefault(0).ToString("N0") đ
+                                </span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
         </div>
     </div>
 </section>
-<section class="xt-feature-product">
-    <div class="row section-separator">
-        <div class="section-title">
-            <h2>SẢN PHẨM HOT</h2>
-            <span class="xt-title-bg"></span>
+
+<section class="bg0 p-t-23 p-b-130">
+    <div class="container">
+        <div class="p-b-10" style="margin-bottom: 20px; text-align: center;">
+            <h3 class="ltext-103 cl5">
+                SẢN PHẨM HOT
+            </h3>
         </div>
-        <div class="xt-each-feature">
-        @foreach (var item in listHotProduct)
-        {
-                <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
-                    <div class="xt-feature">
-                        <div class="product-img">
-                            <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                            <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
+        <div class="row isotope-grid">
+            @foreach (var item in listHotProduct)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <div class="block2" style="background-color: antiquewhite; height: 360px">
+                        <div class="block2-pic hov-img0 label-new" data-label="New">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="IMG-PRODUCT" style="max-height: 270px;">
+                            <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Thêm giỏ hàng
+                            </a>
                         </div>
-                        <div class="product-info">
-                            <div class="product-title">
-                                <span class="category xt-uppercase">Giá bán</span>
-                            </div>
-                            <div class="price-tag pull-right">
-                                <span class="new-price xt-semibold">@item.Price</span>
-                            </div>
-                            <div class="xt-featured-caption">
-                                <div class="add-cart">
-                                    <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm giỏ hàng</a>
-                                </div>
+                        <div class="block2-txt flex-w flex-t p-t-14" style="text-align:-webkit-center;">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/chitietsanpham?name=@item.Metatitle" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="font-size: 16px;">
+                                    @item.Name
+                                </a>
+                                @if (@item.Discount != null)
+                                {
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        <strike>@item.Price.GetValueOrDefault(0).ToString("N0") đ</strike>
+                                    </span>
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        @item.Discount.GetValueOrDefault(0).ToString("N0") đ
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        @item.Price.GetValueOrDefault(0).ToString("N0") đ
+                                    </span>
+                                }
                             </div>
                         </div>
                     </div>

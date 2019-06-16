@@ -1,89 +1,143 @@
 ﻿@using WatchShop.Common;
 @model Model.ViewModel.CategoryTrademarkViewModel
-@{ 
+
+@{
     var carts = (List<WatchShop.Models.CartItem>)ViewBag.carts;
 }
-<div class="main-color-bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 left-menu-wrapper">
-                <div class="xt-sidenav hidden-xs hidden-sm">
-                    <nav>
-                        <ul class="xt-side-menu">
+
+<!-- Header -->
+<header class="header-v3">
+    <div class="container-menu-desktop trans-03">
+        <div class="wrap-menu-desktop">
+            <nav class="limiter-menu-desktop p-l-45">
+                <!--style="background-color: darkslategray;"-->
+                <a href="/" class="logo">
+                    <img src="/Assets/Client/images/logo.png" alt="IMG-LOGO" style="border-radius: 50px;">
+                </a>
+                <div class="menu-desktop">
+                    <ul class="main-menu" style="font-size:13px;">
+                        <li>
+                            <a href="/"><span>TRANG CHỦ</span></a>
+                        </li>
+                        @foreach (var category in Model.listCategory)
+                        {
                             <li>
-                                <a href="">THƯƠNG HIỆU</a>
-                                <ul class="xt-dropdown">
-                                @foreach (var category in Model.listCategory)
-                                {
-                                    <li>
-                                        <a class="xt-nav-link" href="/danhmuc/@category.Metatitle?id=@category.ID_Category"><i class="fa flaticon-glasses"></i>@category.Name</a>
-                                        <ul class="mega-menu">
-                                        @foreach (var trademark in Model.listTrademark)
+                                <a href="/danhmuc?name=@category.Metatitle"><span>@category.Name</span></a>
+                                <ul class="sub-menu">
+                                    @foreach (var trademark in Model.listTrademark)
+                                    {
+                                        if (@category.ID_Category == @trademark.ID_Category)
                                         {
-                                            if (@category.ID_Category == @trademark.ID_Category)
-                                            {
-                                                <li>
-                                                    <ul class="xt-single-mega">
-                                                        <li><a href="/thuonghieu/@trademark.Metatitle?id=@trademark.ID_Trademark">@trademark.Name</a></li>
-                                                    </ul>
-                                                </li>
-                                            }
+                                            <li><a href="/danhmuc?name=@trademark.Metatitle"><span>@trademark.Name</span></a></li>
                                         }
-                                        </ul>
-                                    </li>
-                                }
+                                    }
                                 </ul>
                             </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="col-md-8 col-sm-10 col-xs-12 xt-header-search">
-                <form action="/timkiem" method="get">
-                    <div class="form-group xt-form search-bar  col-md-8 col-sm-8 col-xs-7 padding-right-o">
-                        <input type="text" id="key-name" class="form-control" placeholder="Tìm kiếm sản phẩm" name="name"/>
-                    </div>
-                    <div class="form-group xt-form xt-search-cat col-md-4 col-sm-4 col-xs-5 padding-left-o ">
-                        <div class="xt-search-opt xt-search-btn">
-                            <button type="submit" class="btn btn-primary btn-search"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-1 col-sm-2 col-xs-2">
-                <div class="xt-cart">
-                    <ul>
-                        <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                <i class="fa flaticon-shopping-cart"></i>
-                            </a>
-                            <ul class="dropdown-menu xt-cart-items">
-                                @if (@Session[ValSession.CART_SESSION] == null)
-                                {
-                                    <li style="color: black; text-align: center;">Không có sản phẩm</li>
-                                }else
-                                {
-                                    foreach (var item in carts)
-                                    {
-                                        <li>
-                                            <a href="">
-                                                <img src="/Assets/Client/images/@item.Product.Avatar" alt="">
-                                                <h3>@item.Product.Name</h3>
-                                                <span class="cart-price">@item.Product.Price - @item.Quantity</span>
-                                            </a>
-                                        </li>
-                                    }
-                                }
-                                
-                                <li>
-                                    <a href="/giohang" class="process top-checkout">
-                                        <h3>Xác nhận thanh toán</h3>
-                                    </a>
-                                </li>                                 
-                            </ul>
+                        }
+                        <li>
+                            <a href="/gioithieu"><span>GIỚI THIỆU</span></a>
+                        </li>
+                        <li>
+                            <a href="/lienhe"><span>LIÊN HỆ</span></a>
                         </li>
                     </ul>
-                    <span class="xt-item-count">@Session[ValSession.COUNT_ITEM_CART]</span>
+                </div>
+                <div class="wrap-icon-header flex-w flex-r-m h-full test">
+                    <form action="/timkiem" method="get">
+                        <div class="flex-c-m h-full p-r-25 bor6" style="width: 400px">
+                            <input class="form-control my-0 py-1 amber-border" type="text" id="key-name" name="name" placeholder="Search" aria-label="Search" style="height: 33px;">
+                            <div class="input-group-append">
+                                <span class="input-group-text amber lighten-3" id="basic-text1">
+                                    <button type="submit" class="btn btn-primary btn-search" style="margin-left: -3px; height: 33px;"><i class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="flex-c-m h-full p-r-25 bor6">
+                        <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="@Session[ValSession.COUNT_ITEM_CART_SESSION]">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex-c-m h-full p-lr-19">
+                        <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11">
+                            <a href="/Login/Index" style="color: white"><i class="zmdi zmdi-account-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Cart -->
+<div class="wrap-header-cart js-panel-cart">
+    <div class="s-full js-hide-cart"></div>
+    <div class="header-cart flex-col-l p-l-65 p-r-25">
+        <div class="header-cart-title flex-w flex-sb-m p-b-8">
+            <span class="mtext-103 cl2">
+                Giỏ hàng
+            </span>
+            <div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
+                <i class="zmdi zmdi-close"></i>
+            </div>
+        </div>
+        <div class="header-cart-content flex-w js-pscroll">
+            <ul class="header-cart-wrapitem w-full">
+                @if (@Session[ValSession.CART_SESSION] == null)
+                {
+                    <li class="header-cart-item flex-w flex-t m-b-12" style="color: black; text-align: center;">Chưa có sản phẩm</li>
+                }
+                else
+                {
+                    foreach (var item in carts)
+                    {
+                        <li class="header-cart-item flex-w flex-t m-b-12">
+                            <div class="header-cart-item-img">
+                                <img src="/Assets/Client/images/@item.Product.Avatar" alt="IMG">
+                            </div>
+                            <div class="header-cart-item-txt p-t-8">
+                                <a class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+                                    @item.Product.Name
+                                </a>
+                                @if (@item.Product.Discount != null)
+                                {
+                                    <span class="header-cart-item-info">
+                                        @item.Product.Discount.GetValueOrDefault(0).ToString("N0") đ - @item.Quantity
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="header-cart-item-info">
+                                        @item.Product.Price.GetValueOrDefault(0).ToString("N0") đ - @item.Quantity
+                                    </span>
+                                }
+
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+            <div style="float: right; width:90%">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="header-cart-buttons flex-w w-full">
+                            <a href="/giohang" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                                Thanh toán
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        @if (@Session[ValSession.PAY_SESSION] != null)
+                        {
+                            <div class="header-cart-buttons flex-w w-full">
+                                <a href="/thongtindonhang" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                                    Đơn hàng
+                                </a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

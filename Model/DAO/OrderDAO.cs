@@ -22,5 +22,22 @@ namespace Model.DAO
             db.SaveChanges();
             return od.ID_Order;
         }
+
+        public Order getOrder(long id)
+        {
+            return db.Orders.SingleOrDefault(x => x.ID_Order == id);
+        }
+
+        public void UpdateOrder(Order o)
+        {
+            var entity = db.Orders.SingleOrDefault(x => x.ID_Order == o.ID_Order);
+            entity.Name = o.Name;
+            entity.Email = o.Email;
+            entity.Phone = o.Phone;
+            entity.Address = o.Address;
+            entity.CreateDate = o.CreateDate;
+            entity.Note = o.Note;
+            db.SaveChanges();
+        }
     }
 }

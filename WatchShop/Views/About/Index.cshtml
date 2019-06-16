@@ -1,38 +1,47 @@
 ﻿@model Model.EF.About
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+    ViewBag.Title = "Giới thiệu";
+    Layout = "~/Views/Shared/_Layout_client.cshtml";
 }
 
-<section class="xt-xt-single-product">
+<style>
+    .limiter-menu-desktop {
+        background-color: darkslategray;
+    }
+</style>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/logo_about.png'); margin-top: 130px;"></section>
+<section class="bg0 p-t-75 p-b-120">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3 visible-xs visible-sm padding-right-o"></div>
-            <div class="col-md-9 col-md-offset-3 padding-o" style="background-color: aliceblue;">
-                <div class="xt-product-inner">
-                    <p style="text-indent: 40px;">
+        <div class="row p-b-148">
+            <div class="col-md-7 col-lg-8" style="text-align: justify;">
+                <div class="p-t-7 p-r-85 p-r-15-lg p-r-0-md">
+                    <h3 class="mtext-111 cl2 p-b-16">
                         @Model.Header
-                    </p>
-                    <img src="/Assets/Client/images/@Model.Image" alt="" class="img-responsive" style="width:100%;">
+                    </h3>
+                    <h3 class="mtext-109 cl2 p-b-16">
+                        1. @Model.Title_Body
+                    </h3>
+                    <h6 class="mtext-106 cl2 p-b-16">
+                        @Model.Body
+                    </h6>
+                    <h3 class="mtext-109 cl2 p-b-16">
+                        2. @Model.Title_Guarantee
+                    </h3>
+                    <h6 class="mtext-106 cl2 p-b-16">
+                        @Model.Guarantee
+                    </h6>
+                </div>
+            </div>
+
+            <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
+                <div class="how-bor1 ">
+                    <div class="hov-img0">
+                        <img src="/Assets/Client/images/@Model.Image" alt="IMG">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="clearfix"></div>
-<div class="row section-separator" style="padding-top:15px; width:105%;">
-    <div class="col-md-12">
-        <div class="xt-single-item-info" style="padding-left:12px;">
-            <div class="tab-content xt-tab-content">
-                <div role="tabpanel" class="tab-pane xt-pane xt-description fade in active" id="description">
-                    <h4>@Model.Title_Body</h4>
-                    <p>@Model.Body</p>
-                    
-                    <h4>@Model.Title_Guarantee</h4>
-                    <p>@Model.Guarantee</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 

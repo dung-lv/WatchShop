@@ -23,7 +23,7 @@ namespace Model.ViewModel
 
         public int Quantity { get; set; }
 
-        public bool Hot { get; set; }
+        public string Color { get; set; }
 
         public decimal? Discount { get; set; }
 

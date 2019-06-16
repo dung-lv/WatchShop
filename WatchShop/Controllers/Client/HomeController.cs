@@ -13,7 +13,7 @@ namespace WatchShop.Controllers
 {
     public class HomeController : Controller
     {
-        public static int x = 0;
+        public static int count = 0;
         private ProductDAO productDAO = null;
         private PromotionDAO promotionDAO = null;
         private CategoryDAO categoryDAO = null;
@@ -32,10 +32,10 @@ namespace WatchShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            Session[ValSession.COUNT_ITEM_CART] = x;
-            ViewBag.listPromotionProductTop = promotionDAO.getPromotionProduct(1,3);
-            ViewBag.listPromotionProduct = promotionDAO.getPromotionProduct(1, 0);
-            ViewBag.listHotProduct = productDAO.getListProductHot(10);
+            Session[ValSession.COUNT_ITEM_CART_SESSION] = count;
+            var promotion = promotionDAO.getNewPromotion();
+            ViewBag.listPromotionProductTop = promotionDAO.getPromotionProduct(promotion.ID_Promotion, 8);
+            ViewBag.listHotProduct = productDAO.getListProductHot(12);
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace WatchShop.Controllers
                     item.Product = product;
                     item.Quantity = quantity;
                     list.Add(item);
-                    x++;
+                    count++;
                 }
                 Session[ValSession.CART_SESSION] = list;
             }
@@ -74,10 +74,10 @@ namespace WatchShop.Controllers
                 var list = new List<CartItem>();
                 list.Add(item);
                 Session[ValSession.CART_SESSION] = list;
-                x++;
+                count++;
             }
-            Session[ValSession.COUNT_ITEM_CART] = x;
-            return RedirectToAction("Index");
+            Session[ValSession.COUNT_ITEM_CART_SESSION] = count;
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         [ChildActionOnly]
@@ -85,7 +85,7 @@ namespace WatchShop.Controllers
         {
             var cart = Session[ValSession.CART_SESSION];
             var list = new List<CartItem>();
-            if(cart != null)
+            if (cart != null)
             {
                 list = (List<CartItem>)cart;
             }
@@ -102,6 +102,14 @@ namespace WatchShop.Controllers
         {
             var model = contactDAO.getContact();
             return PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Slide()
+        {
+            var promotion = promotionDAO.getNewPromotion();
+            ViewBag.listPromotionProductTop = promotionDAO.getPromotionProduct(promotion.ID_Promotion, 3);
+            return PartialView();
         }
     }
 }

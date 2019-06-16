@@ -1,109 +1,169 @@
 ﻿@model List<Model.EF.Product>
 @{
-    ViewBag.Title = "Watch Shop";
-    Layout = "~/Views/Shared/_Layout_Client.cshtml";
-    var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout_client.cshtml";
+    //var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
     var totalPage = (int)ViewBag.totalPage;
     var category = (Model.EF.Category)ViewBag.category;
     var trademark = (Model.EF.Trademark)ViewBag.trademark;
+    var listTrademark = (List<Model.EF.Trademark>)ViewBag.listTrademark;
+    var colors = (List<string>)ViewBag.colors;
+    var page = (int)ViewBag.page;
+    var prf = (int)ViewBag.prf;
+    var prt = (int)ViewBag.prt;
+    var co = (string)ViewBag.co;
+    var td = (long)ViewBag.td;
+    var ct = (long)ViewBag.ct;
 }
-<section class="xt-slider">
-    <div class="row">
-        <div class="col-md-3 category-hidden padding-right-o"></div>
-        <div class="col-md-9 col-md-offset-3 padding-o padding-sm">
-            <div class="flexslider xt-slider-inner">
-                <ul class="slides">
-                    @foreach (var item in listPromotionProductTop)
+<style>
+    .limiter-menu-desktop {
+        background-color: darkslategray;
+    }
+</style>
+<div class="bg0 m-t-23 p-b-140" style="margin-top: 130px;">
+    <div class="container">
+        <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-c-m m-tb-10">
+                <div class="bread-crumb flex-w p-l-25 p-r-15 p-lr-0-lg">
+                    <a href="/" class="stext-109 cl8 hov-cl1 trans-04" style="font-size:20px;">
+                        TRANG CHỦ
+                        <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+                    </a>
+                    <span class="stext-109 cl4" style="font-size:20px;">
+                        @category.Name
+                        <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+                    </span>
+                    @if (trademark != null)
                     {
-                        <li style="height:494px;">
-                            <img src="/Assets/Client/images/@item.Avatar" alt="" />
-                            <div class="slide_text">
-                                <span class="slide-category">@item.NamePromotion</span>
-                                <h2 class="slide_title">@item.NameProduct</h2>
-                                <p class="slide_byline ">
-                                    @item.Description
-                                </p>
-                                <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product" class="btn btn-fill ">Mua ngay</a>
-                            </div>
-                        </li>
+                        <span class="stext-109 cl4" style="font-size:20px;">
+                            @trademark.Name
+                        </span>
                     }
-                </ul>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-<div class="xt-product-subpage" style="margin-top: 10px;">
-    <div class="row section-separator">
-        <div class="xt-filter-nav product-sidebar">
-            <div class="price-range" style="width:400px;">
-                <h3>Price</h3>
+            <div class="flex-w flex-c-m m-tb-10">
+                <div class="flex-c-m stext-106 cl6 size-107 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                    <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Lọc sản phẩm
+                </div>
+            </div>
+            <!-- Filter -->
+            <div class="dis-none panel-filter w-full p-t-10">
                 @using (Html.BeginForm("Index", "Product", FormMethod.Post))
                 {
-                    <div class="each-price-range">
-                        <div id="xt-price-range"></div>
-                        <input type="text" style="display: none;" value="@category.ID_Category" name="id"/>
-                        <input type="text" id="amount" class="price-range-amount" name="price">
-                        <button type="submit" class="btn btn-fill">Lọc</button>
+                    <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                        <div class="filter-col1 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Giá bán
+                            </div>
+                            <input name="prf" class="form-control form-control-sm" type="number" value="1" placeholder="From" style="width: 100px; border-radius: 12px; display: inline-block;">
+                            &nbsp;~&nbsp;
+                            <input name="prt" class="form-control form-control-sm" type="number" value="" placeholder="To" style="width: 100px; border-radius: 12px; display: inline-block;">
+                        </div>
+                        <div class="filter-col2 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Thương hiệu
+                            </div>
+                            <div class="size-204 respon6-next">
+                                <select class="form-control" name="td" style="border-radius: 12px;">
+                                    @foreach (var item in listTrademark)
+                                    {
+                                        <option value="@item.ID_Trademark">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="filter-col3 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Màu sắc
+                            </div>
+                            <div class="size-204 respon6-next">
+                                <select class="form-control" name="co" style="border-radius: 12px;">
+                                    @foreach (var item in colors)
+                                    {
+                                        <option value="@item">@item</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <input type="text" value="@category.ID_Category" name="ct" style="display: none">
+                        <input type="text" value="true" name="fill" style="display: none">
+                        <button type="submit" class="btn btn-success" style="float:right;float: right; height: 37px; width: 100px; border-radius: 18px; margin-top: 40px;">Lọc</button>
                     </div>
                 }
             </div>
         </div>
-        <div class="clearfix"></div>
-        <div class="xt-feature-product">
-            <div class="section-separator">
-                <div class="xt-each-feature">
-                @foreach (var item in Model)
-                {
-                    <div class="col-md-3 col-sm-4" style="background-color:antiquewhite">
-                        <div class="xt-feature">
-                            <div class="product-img">
-                                <img src="/Assets/Client/images/@item.Avatar" alt="" class="img-responsive" style="height:315px; margin-top: 10px;">
-                                <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product"><span class="product-tag xt-uppercase">@item.Name</span></a>
-                            </div>
-                            <div class="product-info">
-                                <div class="product-title">
-                                    <span class="category xt-uppercase">Giá bán</span>
-                                </div>
-                                <div class="price-tag pull-right">
-                                    <span class="new-price xt-semibold">@item.Price</span>
-                                </div>
-                                <div class="xt-featured-caption">
-                                    <div class="add-cart">
-                                        <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="btn btn-fill">Thêm vào giỏ</a>
-                                    </div>
-                                </div>
+
+        <div class="row isotope-grid">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item">
+                    <div class="block2" style="background-color: antiquewhite; height: 360px">
+                        <div class="block2-pic hov-img0">
+                            <img src="/Assets/Client/images/@item.Avatar" alt="IMG-PRODUCT" style="height: 270px;">
+                            <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                                Thêm giỏ hàng
+                            </a>
+                        </div>
+                        <div class="block2-txt flex-w flex-t p-t-14" style="text-align:-webkit-center;">
+                            <div class="block2-txt-child1 flex-col-l ">
+                                <a href="/chitietsanpham?name=@item.Metatitle" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" style="font-size: 16px;">
+                                    @item.Name
+                                </a>
+                                @if (@item.Discount != null)
+                                {
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        <strike>@item.Price.GetValueOrDefault(0).ToString("N0") đ</strike>
+                                    </span>
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        @item.Discount.GetValueOrDefault(0).ToString("N0") đ
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="stext-105 cl3" style="font-size: 16px;">
+                                        @item.Price.GetValueOrDefault(0).ToString("N0") đ
+                                    </span>
+                                }
                             </div>
                         </div>
                     </div>
+                </div>
+            }
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex-c-m flex-w w-full p-t-38">
+            @for (var i = 1; i <= totalPage; i++)
+            {
+                if (trademark != null)
+                {
+                    if (i == page)
+                    {
+                        <a href="/danhmuc?name=@trademark.Metatitle&&page=@i&&prf=@prf&&prt=@prt&&co=@co&&td=@td&&ct=@ct" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/danhmuc?name=@trademark.Metatitle&&page=@i&&prf=@prf&&prt=@prt&&co=@co&&td=@td&&ct=@ct" class="flex-c-m how-pagination1 trans-04 m-all-7">@i</a>
+                    }
                 }
-                </div>
-                <div class="clearfix"></div>
-                <div class="col-md-12 xt-bottom-hr">
-                    <hr class="xt-hr">
-                </div>
-                <div class="xt-filter-nav padding-bottom-60" style="float:right;">
-                    <div class="xt-page-pagination">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination xt-pagination">
-                                @for (var i = 1; i <= totalPage; i++)
-                                {
-                                    if(trademark != null)
-                                    {
-                                        <li><a href="/thuonghieu/@trademark.Metatitle?id=@trademark.ID_Trademark&page=@i">@i</a></li>
-                                    }
-                                    else
-                                    {
-                                        <li><a href="/danhmuc/@category.Metatitle?id=@category.ID_Category&page=@i">@i</a></li>
-                                    }
-                                }
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
+                else
+                {
+                    if (i == page)
+                    {
+                        <a href="/danhmuc?name=@category.Metatitle&&page=@i&&prf=@prf&&prt=@prt&&co=@co&&td=@td&&ct=@ct" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/danhmuc?name=@category.Metatitle&&page=@i&&prf=@prf&&prt=@prt&&co=@co&&td=@td&&ct=@ct" class="flex-c-m how-pagination1 trans-04 m-all-7">@i</a>
+                    }
+                }
+            }
         </div>
     </div>
 </div>
+
 
 
 

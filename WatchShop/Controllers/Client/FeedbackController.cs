@@ -11,27 +11,27 @@ namespace WatchShop.Controllers.Client
     public class FeedbackController : Controller
     {
         private FeedbackDAO feedbackDAO = null;
+        private ContactDAO contactDAO = null;
 
         public FeedbackController()
         {
             feedbackDAO = new FeedbackDAO();
+            contactDAO = new ContactDAO();
         }
         // GET: Contact
         public ActionResult Index()
         {
-            return View();
+            var model = contactDAO.getContact();
+            return View(model);
         }
 
         [HttpPost]
-        public JsonResult Send(string name, string phone, string address, string email, string content)
+        public JsonResult Send(string email, string content)
         {
             var feedback = new Feedback();
-            feedback.Name = name;
             feedback.Email = email;
             feedback.CreateDate = DateTime.Now;
-            feedback.Phone = phone;
             feedback.Content = content;
-            feedback.Address = address;
 
             var id = feedbackDAO.InsertFeedback(feedback);
             if (id > 0)

@@ -1,0 +1,47 @@
+﻿@{
+    var listPromotionProductTop = (List<Model.ViewModel.PromotionViewModel>)ViewBag.listPromotionProductTop;
+}
+
+<section class="section-slide">
+    <!--style="margin-top: 83px;"-->
+    <div class="wrap-slick1 rs2-slick1">
+        <div class="slick1">
+            @foreach (var item in listPromotionProductTop)
+            {
+                <div class="item-slick1 bg-overlay1" style="background-image: url(/Assets/Client/images/@item.Avatar); background-repeat: no-repeat; background-size: contain;">
+                    <div class="container h-full">
+                        <div class="flex-col-c-m h-full p-t-100 p-b-60 respon5" style="float: left;">
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+                                <span class="ltext-202 txt-center cl0 respon2">
+                                    @item.NamePromotion
+                                </span>
+                            </div><br />
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+                                <a href="/chitietsanpham/@item.Metatitle?id=@item.ID_Product">
+                                    <span class="ltext-202 txt-center cl0 respon2">
+                                        @item.NameProduct
+                                    </span>
+                                </a>
+                            </div><br />
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="1400">
+                                <span class="ltext-202 txt-center cl0 respon2">
+                                    <strike>@item.Price.GetValueOrDefault(0).ToString("N0") đ</strike>
+                                </span>
+                            </div><br />
+                            <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="1400">
+                                <span class="ltext-202 txt-center cl0 respon2">
+                                    @item.Discount.GetValueOrDefault(0).ToString("N0") đ
+                                </span>
+                            </div><br />
+                            <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1900">
+                                <a href="/themgiohang?id=@item.ID_Product&quantity=1" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+                                    Thêm giỏ hàng
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

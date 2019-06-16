@@ -1,26 +1,21 @@
 ﻿@model Model.EF.Contact
 
-<footer class="xt-footer">
+<footer class="bg3 p-t-75 p-b-32" style="background-color: black;">
     <div class="container">
         <div class="section-separator">
             <div class="row">
-                <div class="col-md-3 col-sm-3" style="margin-top:30px">
+                <div class="col-md-6 col-sm-6">
                     <div class="footer-widget">
-                        <img src="/Assets/Client/images/logo.png" alt="" class="img-responsive">
+                        <img src="/Assets/Client/images/logo_footer.png" alt="" class="img-responsive" style="width: 400px;">
                     </div>
                 </div>
-                <div class="col-md-3 col-sm-3"></div>
-                <div class="col-md-3 col-sm-3"></div>
-                <div class="col-md-3 col-sm-3">
-                    <div class="footer-widget footer-contact">
+                <div class="col-md-6 col-sm-6">
+                    <div class="footer-widget footer-contact" style="padding-top: 70px; color: aliceblue;">
                         <h4>THÔNG TIN LIÊN HỆ</h4>
                         <ul>
-                            <li><i class="fa fa-mobile-phone"></i><a href="">@Model.Phone</a></li>
-                            <li><i class="fa fa-envelope-o"></i><a href="">@Model.Email</a></li>
-                            <li>
-                                <i class="fa fa-location-arrow"></i>
-                                <address>@Model.Address</address>
-                            </li>
+                            <li><i class="fa fa-mobile-phone"></i><a style="padding-left: 20px;">@Model.Phone</a></li>
+                            <li><i class="fa fa-envelope-o"></i><a style="padding-left: 13px;">@Model.Email</a></li>
+                            <li><i class="fa fa-location-arrow"></i><a style="padding-left: 16px;">@Model.Address</a></li>
                         </ul>
                     </div>
                 </div>
@@ -28,4 +23,3 @@
         </div>
     </div>
 </footer>
-

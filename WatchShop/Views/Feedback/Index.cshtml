@@ -1,47 +1,85 @@
-﻿@{
+﻿@model Model.EF.Contact
+@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout_Client.cshtml";
+    Layout = "~/Views/Shared/_Layout_client.cshtml";
 }
+
 <style>
-    #mapCanvas {
-        height: 600px;
+    .limiter-menu-desktop {
+        background-color: darkslategray;
     }
 </style>
-
-<div class="content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-6" style="padding-top: 135px;">
-                <h2>Gửi thông tin</h2>
+<section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('/Assets/Client/images/logo_feedback.png'); margin-top: 130px;"></section>
+<section class="bg0 p-t-104 p-b-116">
+    <div class="container">
+        <div class="flex-w flex-tr">
+            <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
                 <form>
-                    <div class="form-group">
-                        <label>Họ tên</label>
-                        <input type="text" id="txtName" class="form-control" />
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Gửi phản hồi
+                    </h4>
+                    <div class="bor8 m-b-20 how-pos4-parent">
+                        <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" id="txtEmail" name="email" placeholder="Email" required="required"
+                               autocomplete="off" oninvalid="this.setCustomValidity('Email chưa đúng định dạng')" oninput="this.setCustomValidity('')">
+                        <img class="how-pos4 pointer-none" src="/Assets/Client/images/icons/icon-email.png" alt="ICON">
                     </div>
-                    <div class="form-group">
-                        <label>Điện thoại</label>
-                        <input type="text" id="txtPhone" class="form-control" />
+                    <div class="bor8 m-b-30">
+                        <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" id="txtContent" name="msg" placeholder="Message" required="required" oninvalid="this.setCustomValidity('Message không được để trống')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label>Địa chỉ</label>
-                        <input type="text" id="txtAddress" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="text" id="txtEmail" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Yêu cầu</label>
-                        <textarea id="txtContent" class="form-control"></textarea>
-                    </div>
-                    <button id="btnSend" class="btn btn-success" style="float:right;">Gửi đi</button>
+                    <button id="btnSend" class="btn flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">Submit</button>
                 </form>
             </div>
-            <div class="col-md-6">
-                <h2>Bản đồ</h2>
-                <div class="map" id="mapCanvas"></div>
+            <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
+                <div class="flex-w w-full p-b-42">
+                    <span class="fs-18 cl5 txt-center size-211">
+                        <span class="lnr lnr-map-marker"></span>
+                    </span>
+                    <div class="size-212 p-t-2">
+                        <span class="mtext-110 cl2">
+                            Địa chỉ
+                        </span>
+                        <p class="stext-115 cl6 size-213 p-t-18">
+                            @Model.Address
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-w w-full p-b-42">
+                    <span class="fs-18 cl5 txt-center size-211">
+                        <span class="lnr lnr-phone-handset"></span>
+                    </span>
+                    <div class="size-212 p-t-2">
+                        <span class="mtext-110 cl2">
+                            Điện thoại
+                        </span>
+                        <p class="stext-115 cl1 size-213 p-t-18">
+                            @Model.Phone
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-w w-full">
+                    <span class="fs-18 cl5 txt-center size-211">
+                        <span class="lnr lnr-envelope"></span>
+                    </span>
+                    <div class="size-212 p-t-2">
+                        <span class="mtext-110 cl2">
+                            Email
+                        </span>
+                        <p class="stext-115 cl1 size-213 p-t-18">
+                            @Model.Email
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</section>
+
+<div class="map">
+    <div class="size-303" id="google_map" data-map-x="40.691446" data-map-y="-73.886787" data-pin="images/icons/pin.png" data-scrollwhell="0" data-draggable="1" data-zoom="11"></div>
 </div>
+
+
+
+
+
 

@@ -26,6 +26,11 @@ namespace Model.DAO
             return db.Categories.SingleOrDefault(x => x.ID_Category == id);
         }
 
+        public Category getDetailCategoryByMetaTitle(string metatitle)
+        {
+            return db.Categories.SingleOrDefault(x => x.Metatitle == metatitle);
+        }
+
         public Category getDetailCategoryByTrademark(long id)
         {
             Trademark trademark = db.Trademarks.SingleOrDefault(x => x.ID_Trademark == id);

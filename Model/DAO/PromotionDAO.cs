@@ -22,6 +22,11 @@ namespace Model.DAO
             return db.Promotions.Where(x => x.EndTime > DateTime.Now).OrderByDescending(x => x.StartTime).ToList();
         }
 
+        public Promotion getNewPromotion()
+        {
+            return db.Promotions.Where(x => x.EndTime > DateTime.Now).OrderByDescending(x => x.StartTime).SingleOrDefault();
+        }
+
         public Promotion getPromotionById(long promotionID)
         {
             return db.Promotions.SingleOrDefault(x => x.ID_Promotion == promotionID);
@@ -40,22 +45,22 @@ namespace Model.DAO
                             NamePromotion = prom.Name,
                             StartTime = prom.StartTime,
                             EndTime = prom.EndTime,
-                            Description = prom.Description,
                             Price = prod.Price,
                             Discount = prod.Discount,
                             Avatar = prod.Avatar,
                             NameProduct = prod.Name,
                             Metatitle = prod.Metatitle
                         };
-            if(top != 0)
+            if (top != 0)
             {
                 return model.Take(top).ToList();
             }
             else
             {
                 return model.ToList();
-            }    
+            }
         }
+
         public IEnumerable<Promotion> ListAllPaging(int page = 1, int pageSize = 4)
         {
             return db.Promotions.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
