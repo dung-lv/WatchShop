@@ -72,11 +72,11 @@
                                         </td>
                                         @if (@item.Product.Discount != null)
                                         {
-                                            <td style="text-align: center" class="total">@((item.Product.Discount.GetValueOrDefault(0) * item.Quantity).ToString("N0")) đ</td>
+                                            <td style="text-align: center" class="total">@((item.Product.Discount * item.Quantity).GetValueOrDefault(0).ToString("N0")) đ</td>
                                         }
                                         else
                                         {
-                                            <td style="text-align: center" class="total">@((item.Product.Price.GetValueOrDefault(0) * item.Quantity).ToString("N0")) đ</td>
+                                            <td style="text-align: center" class="total">@((item.Product.Price * item.Quantity).GetValueOrDefault(0).ToString("N0")) đ</td>
                                         }
                                         <td style="text-align: center"><button data-id="@item.Product.ID_Product" class="btnDelete">Xoá</button></td>
                                     </tr>
