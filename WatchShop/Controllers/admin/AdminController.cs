@@ -27,12 +27,13 @@ namespace WatchShop.Controllers.admin
             trademarkDAO = new TrademarkDAO();
         }
         // GET: Admin
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(String searchString, int page = 1, int pageSize = 10)
         {
-            var model = productDAO.ListAllPaging(page, pageSize);
+            var model = productDAO.ListAllPaging(searchString,page, pageSize);
             List<Promotion> promotions = promotionDAO.getNewPromotions();
             promotions.Insert(0, new Promotion());
             ViewBag.promotion = promotions;
+            ViewBag.SearchString = searchString;
             ViewBag.trademark = trademarkDAO.getAll();
             return View(model);
         }

@@ -28,9 +28,20 @@ namespace Model.DAO
             return db.OrderDetails.Where(x => x.ID_Order == id).ToList();
         }
 
-        public IEnumerable<OrderDetail> ListAllPaging(int page = 1, int pageSize = 4)
+        public IEnumerable<OrderDetail> ListAllPaging(String searchString, String status ,int page = 1, int pageSize = 4)
         {
-            return db.OrderDetails.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+
+            IQueryable<OrderDetail> model = db.OrderDetails;
+            if (!string.IsNullOrEmpty(status) &&status !="AL")
+            {
+                model = model.Where(x => x.Order.Status == status);
+            }
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Order.Name.Contains(searchString) || x.Order.Phone.Contains(searchString));
+            }
+
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
         }
 
         public void changeStatus(long id , string status)

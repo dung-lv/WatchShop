@@ -9,7 +9,8 @@
         var metatitle = $(this).closest('tr').find('.metatitle-product').text();
         var description = $(this).closest('tr').find('.description-product').text();
         var content = $(this).closest('tr').find('.content-product').text();
-
+        var Color = $(this).closest('tr').find('.color-product').text();
+         
         $("input[name=name]").val(name);
         $("#profile-img-tag").attr("src", "/Assets/Client/images/" + avatar);
         $("input[name=ImageFile]").html(avatar);
@@ -19,6 +20,7 @@
         $("input[name=metatitle]").val(metatitle);
         $("textarea[name=description]").val(description);
         $("textarea[name=content]").val(content);
+        $("input[name=Color]").val(Color);
     });
 
     $('.btn-delete-product').click(function (e) {

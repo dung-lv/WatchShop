@@ -10,6 +10,33 @@
     }
 </style>
 <h2 class="title-1" style="text-align: center;">Danh sách Order</h2>
+<div class="row">
+    
+    <div class="col-12">
+        @using (Html.BeginForm("Index", "AdminOrder", FormMethod.Post))
+        {<div class="row">
+                <div class="col-md-6">
+                    <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" placeholder="Tìm Kiếm" />
+                </div>
+                <div class="col-2">
+                    <select id="status" name="status">
+                        <option value="Al">All</option>
+                        <option value="W">Đang đợi</option>
+                        <option value="CF">Đã xác nhận</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                </div>
+            </div>
+
+
+
+        }
+
+    </div>
+    
+</div>
 <table class="table table-bordered" style="background-color:white">
     <thead>
         <tr>
@@ -54,7 +81,7 @@
 
 
 </table>
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString, @status=ViewBag.status }))
 @using (Html.BeginForm("update", "AdminOrder", FormMethod.Post))
 {
     <div class="modal fade" id="OrderModal" role="dialog">

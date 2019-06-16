@@ -16,9 +16,11 @@ namespace WatchShop.Controllers.admin
             orderDetailDAO = new OrderDetailDAO();
         }
         // GET: AdminOrder
-        public ActionResult Index(int page = 1, int pageSize = 5)
+        public ActionResult Index(String searchString, String status, int page = 1, int pageSize = 5)
         {
-            var model = orderDetailDAO.ListAllPaging(page,pageSize);
+            var model = orderDetailDAO.ListAllPaging(searchString, status,page,pageSize);
+            ViewBag.SearchString = searchString;
+            ViewBag.status = status;
             return View(model);
         }
         [HttpPost]

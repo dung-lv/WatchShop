@@ -188,9 +188,16 @@ namespace Model.DAO
             db.SaveChanges();
         }
 
-        public IEnumerable<Product> ListAllPaging(int page = 1, int pageSize = 4)
+        public IEnumerable<Product> ListAllPaging(string searchString, int page = 1, int pageSize = 4)
         {
-            return db.Products.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+            IQueryable<Product> model = db.Products;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
+            }
+
+            return model.OrderByDescending(x => x.CreateDate).ToPagedList(page, pageSize);
+            
         }
     }
 }

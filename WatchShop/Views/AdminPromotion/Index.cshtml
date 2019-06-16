@@ -19,7 +19,6 @@
             <td>Tên khuyến mại</td>
             <td>Từ Ngày</td>
             <td>Đến Ngày</td>
-            <td>Mô Tả</td>
             <td>Thao tác</td>
         </tr>
     </thead>
@@ -31,7 +30,6 @@
 
                 <td class="startTime-promotion"> @DateTime.Parse(item.StartTime.ToString()).ToString("dd/MM/yyyy")</td>
                 <td class="endTime-promotion"> @DateTime.Parse(item.EndTime.ToString()).ToString("dd/MM/yyyy")</td>
-                <td class="description-promotion">@item.Description</td>
                 <td>
                     <button class="btn btn-info btn-update-promotion" data-toggle="modal" data-target="#PromotionModal">Sửa</button>
                     <button class="btn btn-warning btn-delete-promotion" data-id="@item.ID_Promotion">Xoá</button>
@@ -80,15 +78,6 @@
                                     <label for="input-date-dob" class="glyphicon glyphicon-th" id="date-dob"></label>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="name">Mô Tả</label> <br>
-                            <textarea rows="4" cols="50" name="Description" style="border:solid 1px orange;">
-                            </textarea>
-                            <br>
-
                         </div>
                     </div>
                     <div class="modal-footer">

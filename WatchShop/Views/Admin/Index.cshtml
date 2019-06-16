@@ -7,7 +7,29 @@
     var trademark = (List<Model.EF.Trademark>)ViewBag.trademark;
 }
 <h2 class="title-1" style="text-align: center;">Danh sách sản phẩm</h2>
-<button class="au-btn au-btn-icon au-btn--blue" data-toggle="modal" data-target="#productModal" style="float:right;"><i class="zmdi zmdi-plus"></i>Thêm sản phẩm</button>
+<div class="row">
+
+    <div class="col-8">
+        @using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+        {<div class="row">
+                <div class="col-md-6">
+                    <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" placeholder="Tìm Kiếm" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Tìm kiếm</button>
+                </div>
+            </div>
+
+
+
+        }
+
+    </div>
+    <div class="col-4">
+        <button class="au-btn au-btn-icon au-btn--blue" data-toggle="modal" data-target="#productModal" style="float:right;"><i class="zmdi zmdi-plus"></i>Thêm sản phẩm</button>
+
+    </div>
+</div>
 <table class="table table-bordered" style="background-color:white">
     <thead>
         <tr>
@@ -23,6 +45,7 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td class="color-product" width="0">@item.Color</td>
                 <td class="name-product">@item.Name</td>
                 <td class="avatar-product" name="@item.Avatar"><img src="/Assets/Client/images/@item.Avatar" width="100" /></td>
                 <td class="quantity-product">@item.Quantity</td>
@@ -41,6 +64,8 @@
 
     </tbody>
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+
 @using (Html.BeginForm("CreateOrUpdateProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="modal fade" id="productModal" role="dialog">
@@ -112,7 +137,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <label class="checkbox-inline">Sản phẩm Hot: <input type="checkbox" value="true" name="hot"></label>
+                                    <label class="Color">Màu sắc: <input type="text" name="Color"></label>
                                 </div>
                             </div>
                         </div>
